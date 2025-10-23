@@ -1,11 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaBuilding } from "react-icons/fa";
-import { FaChartBar } from "react-icons/fa";
-import { FaBolt } from "react-icons/fa";
-import { FaRocket } from "react-icons/fa";
-import { FaDatabase } from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
+import { FaBuilding, FaChartBar, FaBolt, FaRocket, FaDatabase, FaLock } from "react-icons";
 
 const solutionsData = [
   { title: "ERP Systems", icon: FaBuilding },
