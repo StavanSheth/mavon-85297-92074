@@ -1,4 +1,6 @@
 import { Target, Users, Leaf, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ScrollReveal from './ScrollReveal';
 
 interface AboutProps {
   liteMode: boolean;
@@ -9,80 +11,168 @@ const About = ({ liteMode }: AboutProps) => {
     {
       icon: Target,
       title: 'Our Mission',
-      color: 'text-amber-500',
-      bgColor: 'bg-amber-500/20',
+      color: 'text-service-marketing',
+      bgColor: 'bg-service-marketing/20',
+      borderColor: 'border-service-marketing/30',
       description: 'To deliver innovative technology solutions that empower businesses while maintaining environmental responsibility.'
     },
     {
       icon: Users,
       title: 'Innovative Solutions',
-      color: 'text-sky-500',
-      bgColor: 'bg-sky-500/20',
+      color: 'text-service-digital',
+      bgColor: 'bg-service-digital/20',
+      borderColor: 'border-service-digital/30',
       description: 'Driven by Technology & Vision.'
     },
     {
       icon: Leaf,
       title: 'Sustainability',
-      color: 'text-emerald-500',
-      bgColor: 'bg-emerald-500/20',
+      color: 'text-primary',
+      bgColor: 'bg-primary/20',
+      borderColor: 'border-primary/30',
       description: 'Building eco-conscious solutions that grow with nature and contribute to a sustainable future.'
     },
     {
       icon: Award,
       title: 'Excellence Focused',
-      color: 'text-violet-500',
-      bgColor: 'bg-violet-500/20',
+      color: 'text-service-branding',
+      bgColor: 'bg-service-branding/20',
+      borderColor: 'border-service-branding/30',
       description: 'Building the Future'
     }
   ];
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-holographic mb-4">
-          About Mavon
-        </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Moving Innovation Forward with sustainable technology solutions
-        </p>
-      </div>
+    <div className="container mx-auto px-4 relative">
+      {/* Floating keywords animation */}
+      {!liteMode && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          {['Innovation', 'Sustainable', 'Technology', 'Future'].map((word, i) => (
+            <motion.div
+              key={word}
+              className="absolute text-2xl font-bold text-primary"
+              style={{
+                left: `${20 + i * 20}%`,
+                top: `${30 + i * 10}%`,
+              }}
+              animate={{
+                y: [0, -20, 0],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4,
+                delay: i * 0.5,
+                repeat: Infinity,
+              }}
+            >
+              {word}
+            </motion.div>
+          ))}
+        </div>
+      )}
 
-      <div className="max-w-4xl mx-auto mb-16">
-        <div className="glass-card p-8 rounded-2xl">
-          <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-            At Mavon, we believe in the power of technology to transform businesses while preserving our planet. 
-            Our team combines cutting-edge development practices with sustainable approaches to create solutions 
-            that not only meet your needs today but also contribute to a better tomorrow.
-          </p>
-          <p className="text-lg text-foreground/90 leading-relaxed">
-            From custom software development to digital marketing strategies, we're your partner in digital transformation. 
-            We take pride in delivering exceptional results that drive growth and innovation.
+      <ScrollReveal disabled={liteMode}>
+        <div className="text-center mb-16">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+            animate={!liteMode ? {
+              textShadow: [
+                '0 0 20px rgba(102, 187, 106, 0.5)',
+                '0 0 40px rgba(102, 187, 106, 0.8)',
+                '0 0 20px rgba(102, 187, 106, 0.5)',
+              ],
+            } : {}}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            About Mavon
+          </motion.h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Moving Innovation Forward with sustainable technology solutions
           </p>
         </div>
-      </div>
+      </ScrollReveal>
+
+      <ScrollReveal disabled={liteMode} delay={0.2}>
+        <div className="max-w-4xl mx-auto mb-16">
+          <motion.div 
+            className="glass-card p-8 rounded-2xl border-2 border-primary/20"
+            whileHover={!liteMode ? { scale: 1.01, boxShadow: '0 0 40px rgba(102, 187, 106, 0.3)' } : {}}
+          >
+            <p className="text-lg text-foreground/90 leading-relaxed mb-6">
+              At Mavon, we believe in the power of technology to transform businesses while preserving our planet. 
+              Our team combines cutting-edge development practices with sustainable approaches to create solutions 
+              that not only meet your needs today but also contribute to a better tomorrow.
+            </p>
+            <motion.p 
+              className="text-lg text-foreground/90 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              From custom software development to digital marketing strategies, we're your partner in digital transformation. 
+              We take pride in delivering exceptional results that drive growth and <motion.span
+                className="text-primary font-semibold"
+                animate={!liteMode ? { 
+                  textShadow: [
+                    '0 0 10px rgba(102, 187, 106, 0.5)',
+                    '0 0 20px rgba(102, 187, 106, 0.8)',
+                    '0 0 10px rgba(102, 187, 106, 0.5)',
+                  ],
+                } : {}}
+                transition={{ duration: 2, repeat: Infinity }}
+              >innovation</motion.span>.
+            </motion.p>
+          </motion.div>
+        </div>
+      </ScrollReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {values.map((value, index) => {
           const Icon = value.icon;
           return (
-            <div
+            <ScrollReveal 
               key={index}
-              className="glass-card p-6 rounded-xl hover:glow-medium transition-all duration-300 group"
+              delay={index * 0.15}
+              disabled={liteMode}
             >
-              <div className="flex items-start gap-4">
-                <div className={`p-3 rounded-lg ${value.bgColor} group-hover:scale-110 transition-all flex-shrink-0`}>
-                  <Icon className={`w-6 h-6 ${value.color}`} />
+              <motion.div
+                className={`glass-card p-6 rounded-xl border-2 transition-all duration-300 group ${value.borderColor}`}
+                whileHover={!liteMode ? { 
+                  scale: 1.03, 
+                  y: -6,
+                  boxShadow: '0 20px 40px rgba(102, 187, 106, 0.2)',
+                } : {}}
+              >
+                {/* Glow effect */}
+                <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 ${value.bgColor} blur-xl`} />
+                
+                <div className="relative flex items-start gap-4">
+                  <motion.div 
+                    className={`p-3 rounded-lg ${value.bgColor} flex-shrink-0`}
+                    animate={!liteMode ? {
+                      rotate: [0, 10, -10, 0],
+                      scale: [1, 1.1, 1],
+                    } : {}}
+                    transition={{
+                      duration: 4,
+                      delay: index * 0.3,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <Icon className={`w-6 h-6 ${value.color}`} />
+                  </motion.div>
+                  <div>
+                    <h3 className={`text-xl font-bold mb-2 ${value.color}`}>
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-muted-foreground">
-                    {value.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            </ScrollReveal>
           );
         })}
       </div>

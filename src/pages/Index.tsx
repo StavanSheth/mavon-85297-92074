@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
-import Hero from '@/components/Hero';
+import { motion } from 'framer-motion';
+import EnhancedHero from '@/components/EnhancedHero';
 import Services from '@/components/Services';
 import Solutions from '@/components/Solutions';
 import About from '@/components/About';
@@ -44,7 +45,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-20 relative z-10">
-        <Hero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
+        <EnhancedHero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
       </section>
 
       {/* Services Section */}
@@ -68,13 +69,17 @@ const Index = () => {
       </section>
 
       {/* Scroll to Top Indicator */}
-      <button
+      <motion.button
         onClick={() => scrollToSection('home')}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full glass-card flex items-center justify-center hover:glow-strong transition-all hover:scale-110 z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full glass-card flex items-center justify-center transition-all z-40"
+        whileHover={{ scale: 1.1, boxShadow: '0 0 40px rgba(102, 187, 106, 0.4)' }}
+        whileTap={{ scale: 0.9 }}
+        animate={!liteMode ? { y: [0, -5, 0] } : {}}
+        transition={{ duration: 2, repeat: Infinity }}
         aria-label="Scroll to top"
       >
         <ChevronDown className="rotate-180 text-primary" size={20} />
-      </button>
+      </motion.button>
 
       {/* Footer */}
       <footer className="py-8 border-t border-border/50">

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Monitor, Smartphone, Database, Cog, Palette, PenTool, ChevronDown, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
+import ScrollReveal from './ScrollReveal';
 import { servicesData } from '@/lib/servicesData';
 
 interface ServicesProps {
@@ -186,14 +188,23 @@ const Services = ({ liteMode }: ServicesProps) => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold text-holographic mb-4">
-            Our Services
-          </h2>
-          {<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {/* Comprehensive solutions powered by innovation and sustainability */}
-          </p> }
-        </div>
+        <ScrollReveal disabled={liteMode}>
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+              animate={!liteMode ? {
+                textShadow: [
+                  '0 0 20px rgba(102, 187, 106, 0.5)',
+                  '0 0 40px rgba(102, 187, 106, 0.8)',
+                  '0 0 20px rgba(102, 187, 106, 0.5)',
+                ],
+              } : {}}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Our Services
+            </motion.h2>
+          </div>
+        </ScrollReveal>
 
         {/* Service Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
@@ -204,12 +215,14 @@ const Services = ({ liteMode }: ServicesProps) => {
             const colors = getColorClasses(category.color);
 
             return (
-              <div
+              <ScrollReveal 
                 key={category.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                delay={index * 0.1}
+                disabled={liteMode}
               >
-                <button
+                <motion.button
+                  whileHover={!liteMode ? { scale: 1.02, y: -4 } : {}}
+                  whileTap={!liteMode ? { scale: 0.98 } : {}}
                   onClick={() => handleCardClick(category.id)}
                   onMouseEnter={() => setHoveredCard(category.id)}
                   onMouseLeave={() => setHoveredCard(null)}
@@ -259,8 +272,8 @@ const Services = ({ liteMode }: ServicesProps) => {
                       ))}
                     </div>
                   )}
-                </button>
-              </div>
+                </motion.button>
+              </ScrollReveal>
             );
           })}
         </div>
