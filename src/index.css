@@ -175,6 +175,16 @@ All colors MUST be HSL.
     to { opacity: 0; }
   }
 
+  /* Gradient backgrounds */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  /* 3D perspective */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;

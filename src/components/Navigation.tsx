@@ -1,6 +1,9 @@
-import { Home, Settings, Package, Briefcase, Mail, Menu } from "lucide-react";
+import { Home, Settings, Package, Briefcase, Mail, Menu, Zap } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLiteMode } from "@/contexts/LiteModeContext";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import {
   Sheet,
   SheetContent,
@@ -14,6 +17,7 @@ export const Navigation = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [activeHash, setActiveHash] = useState(location.hash || '');
+  const { liteMode, toggleLiteMode } = useLiteMode();
 
   const navItems = [
     { icon: Home, label: "Home", path: "#home" },
@@ -85,6 +89,26 @@ export const Navigation = () => {
               <span className="text-2xl font-bold text-primary">Mavon</span>
             </SheetTitle>
           </SheetHeader>
+
+          {/* Lite Mode Toggle */}
+          <div className="mb-6 p-4 rounded-lg bg-card/30 border border-primary/20">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-primary" />
+                <Label htmlFor="lite-mode" className="text-sm font-medium cursor-pointer">
+                  Performance Mode
+                </Label>
+              </div>
+              <Switch 
+                id="lite-mode" 
+                checked={liteMode} 
+                onCheckedChange={toggleLiteMode}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              {liteMode ? 'Animations disabled for better performance' : 'Full experience with animations'}
+            </p>
+          </div>
 
           <nav>
             <ul className="flex flex-col gap-4">

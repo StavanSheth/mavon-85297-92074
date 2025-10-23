@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
@@ -7,10 +6,14 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import FloatingMascot from '@/components/FloatingMascot';
 import FireflyCursor from '@/components/FireflyCursor';
+import ParticleSystem from '@/components/ParticleSystem';
+import ParallaxBackground from '@/components/ParallaxBackground';
+import FloatingLeaves from '@/components/FloatingLeaves';
 import { Navigation } from '@/components/Navigation';
+import { useLiteMode } from '@/contexts/LiteModeContext';
 
 const Index = () => {
-  const [liteModeEnabled, setLiteModeEnabled] = useState(false);
+  const { liteMode } = useLiteMode();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -21,38 +24,47 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden cursor-firefly">
+      {/* 3D Particle System */}
+      {!liteMode && <ParticleSystem />}
+      
+      {/* Parallax Background Layers */}
+      {!liteMode && <ParallaxBackground />}
+      
+      {/* Floating Leaves */}
+      {!liteMode && <FloatingLeaves />}
+      
       {/* Firefly cursor effect */}
-      {!liteModeEnabled && <FireflyCursor />}
+      {!liteMode && <FireflyCursor />}
 
       {/* Floating Mascot */}
-      {!liteModeEnabled && <FloatingMascot />}
+      {!liteMode && <FloatingMascot />}
 
       {/* Navigation */}
       <Navigation />
 
       {/* Hero Section */}
-      <section id="home" className="pt-20">
-        <Hero onScrollToServices={() => scrollToSection('services')} liteMode={liteModeEnabled} />
+      <section id="home" className="pt-20 relative z-10">
+        <Hero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20">
-        <Services liteMode={liteModeEnabled} />
+      <section id="services" className="py-20 relative z-10">
+        <Services liteMode={liteMode} />
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-20">
-        <Solutions liteMode={liteModeEnabled} />
+      <section id="solutions" className="py-20 relative z-10">
+        <Solutions liteMode={liteMode} />
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
-        <About liteMode={liteModeEnabled} />
+      <section id="about" className="py-20 relative z-10">
+        <About liteMode={liteMode} />
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <Contact liteMode={liteModeEnabled} />
+      <section id="contact" className="py-20 relative z-10">
+        <Contact liteMode={liteMode} />
       </section>
 
       {/* Scroll to Top Indicator */}

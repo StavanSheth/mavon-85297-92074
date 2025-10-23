@@ -189,6 +189,20 @@ export default {
           "0%": { transform: "translateY(0) scale(1)", opacity: "1" },
           "100%": { transform: "translateY(-60px) scale(0.5)", opacity: "0" },
         },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        "gradient-shift": {
+          "0%, 100%": { 
+            backgroundPosition: "0% 50%",
+            transform: "scale(1)",
+          },
+          "50%": { 
+            backgroundPosition: "100% 50%",
+            transform: "scale(1.05)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
@@ -212,6 +226,8 @@ export default {
         "ripple": "ripple 0.6s ease-out",
         "pulse-text": "pulse-text 2s linear infinite",
         "particle-float": "particle-float 1.5s ease-out forwards",
+        "pulse-slow": "pulse-slow 4s ease-in-out infinite",
+        "gradient-shift": "gradient-shift 8s ease-in-out infinite",
       },
     },
   },
