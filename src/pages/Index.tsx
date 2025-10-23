@@ -10,6 +10,9 @@ import FireflyCursor from '@/components/FireflyCursor';
 import ParticleSystem from '@/components/ParticleSystem';
 import ParallaxBackground from '@/components/ParallaxBackground';
 import FloatingLeaves from '@/components/FloatingLeaves';
+import InteractiveButterflies from '@/components/InteractiveButterflies';
+import InteractiveBirds from '@/components/InteractiveBirds';
+import SectionTransition from '@/components/SectionTransition';
 import { Navigation } from '@/components/Navigation';
 import { useLiteMode } from '@/contexts/LiteModeContext';
 
@@ -34,6 +37,12 @@ const Index = () => {
       {/* Floating Leaves */}
       {!liteMode && <FloatingLeaves />}
       
+      {/* Interactive Butterflies */}
+      {!liteMode && <InteractiveButterflies />}
+      
+      {/* Interactive Birds */}
+      {!liteMode && <InteractiveBirds />}
+      
       {/* Firefly cursor effect */}
       {!liteMode && <FireflyCursor />}
 
@@ -44,29 +53,59 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 relative z-10">
-        <EnhancedHero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
-      </section>
+      <SectionTransition 
+        id="home" 
+        fromColor="hsl(var(--background))"
+        toColor="hsl(var(--forest-deep))"
+      >
+        <div className="pt-20">
+          <EnhancedHero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
+        </div>
+      </SectionTransition>
 
       {/* Services Section */}
-      <section id="services" className="py-20 relative z-10">
-        <Services liteMode={liteMode} />
-      </section>
+      <SectionTransition 
+        id="services"
+        fromColor="hsl(var(--forest-deep))"
+        toColor="hsl(var(--forest-canopy))"
+      >
+        <div className="py-20">
+          <Services liteMode={liteMode} />
+        </div>
+      </SectionTransition>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-20 relative z-10">
-        <Solutions liteMode={liteMode} />
-      </section>
+      <SectionTransition 
+        id="solutions"
+        fromColor="hsl(var(--forest-canopy))"
+        toColor="hsl(var(--background))"
+      >
+        <div className="py-20">
+          <Solutions liteMode={liteMode} />
+        </div>
+      </SectionTransition>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative z-10">
-        <About liteMode={liteMode} />
-      </section>
+      <SectionTransition 
+        id="about"
+        fromColor="hsl(var(--background))"
+        toColor="hsl(var(--forest-deep))"
+      >
+        <div className="py-20">
+          <About liteMode={liteMode} />
+        </div>
+      </SectionTransition>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative z-10">
-        <Contact liteMode={liteMode} />
-      </section>
+      <SectionTransition 
+        id="contact"
+        fromColor="hsl(var(--forest-deep))"
+        toColor="hsl(var(--background))"
+      >
+        <div className="py-20">
+          <Contact liteMode={liteMode} />
+        </div>
+      </SectionTransition>
 
       {/* Scroll to Top Indicator */}
       <motion.button
