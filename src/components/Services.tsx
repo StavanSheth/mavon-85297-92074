@@ -1,145 +1,334 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { 
-  FaDesktop, FaLaptop, FaMobileAlt, FaRobot, FaDatabase, FaCog, FaPaintBrush, FaTag 
-} from "react-icons";
+import { useState, useEffect, useRef } from 'react';
+import { Monitor, Smartphone, Database, Cog, Palette, PenTool, ChevronDown, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
+import EnhancedServiceCard from './EnhancedServiceCard';
+import ScrollReveal from './ScrollReveal';
+import { servicesData } from '@/lib/servicesData';
 
- 
+interface ServicesProps {
+  liteMode: boolean;
+}
 
-const servicesData = [
-  {
-    title: "Software – Web & Retail",
-    icons: [FaDesktop, FaLaptop],
-    emojis: ["🖥️","💻","🌐"],
-    products: [
-      { title: "Smart School ERP", url: "https://estimated-pink-gexrdmzfyd.edgeone.app/" },
-      { title: "Retail POS System", url: "https://strange-plum-fwsaqii4am.edgeone.app/" },
-    ],
-  },
-  {
-    title: "Software – Mobile & AI",
-    icons: [FaMobileAlt, FaRobot],
-    emojis: ["📱","🤖","💡"],
-    products: [
-      { title: "Food Delivery App", url: "https://yelling-silver-gmekct689c.edgeone.app/" },
-      { title: "Event Booking App", url: "https://healthy-silver-1z1wv0edff.edgeone.app/" },
-      { title: "Customer Support Bot", url: "https://gross-harlequin-b2hvbovbgo.edgeone.app/" },
-      { title: "Lead Generation Bot", url: "https://misty-magenta-5uchb0osqg.edgeone.app/" },
-    ],
-  },
-  {
-    title: "Database Management",
-    icons: [FaDatabase],
-    emojis: ["🗄️","📊","📈"],
-    products: [
-      { title: "Inventory Management", url: "https://expected-sapphire-tusuknvapl.edgeone.app/" },
-      { title: "Student Records System", url: "https://ready-sapphire-szs4upgpgd.edgeone.app/" },
-    ],
-  },
-  {
-    title: "Automation Tools",
-    icons: [FaCog],
-    emojis: ["⚙️","🔄","📑"],
-    products: [
-      { title: "Invoice Generator", url: "https://angry-brown-gmnknlbjex.edgeone.app/" },
-      { title: "Email Scheduler", url: "https://proposed-fuchsia-92j2abyo6t.edgeone.app/" },
-    ],
-  },
-  {
-    title: "Digital Products",
-    icons: [FaPaintBrush],
-    emojis: ["🖌️","🎨","💻"],
-    products: [
-      { title: "Festival Posts", url: "#" },
-      { title: "Business Posts", url: "#" },
-    ],
-  },
-  {
-    title: "Branding & Design",
-    icons: [FaTag],
-    emojis: ["🏷️","✨","📐"],
-    products: [
-      { title: "3D Lettermark Logo", url: "#" },
-      { title: "Mascot Logo", url: "#" },
-    ],
-  },
-];
+type ServiceColor = 'software' | 'digital' | 'branding' | 'marketing';
 
-const Services = () => {
-  const [selected, setSelected] = useState(null);
+const Services = ({ liteMode }: ServicesProps) => {
+  const [expandedService, setExpandedService] = useState<string | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const serviceCategories = [
+    {
+      id: 'software-web-retail',
+      title: 'Software– Web & Retail',
+      icon: Monitor,
+      color: 'marketing' as ServiceColor,
+      description: 'Enterprise-grade web applications and retail systems',
+      subcategories: servicesData.softwareWebRetail,
+    },
+    {
+      id: 'software-mobile-ai',
+      title: 'Software– Mobile & AI',
+      icon: Smartphone,
+      color: 'digital' as ServiceColor,
+      description: 'Smart mobile apps and intelligent chatbot solutions',
+      subcategories: servicesData.softwareMobileAI,
+    },
+    {
+      id: 'software-dbms',
+      title: 'Database Management',
+      icon: Database,
+      color: 'branding' as ServiceColor,
+      description: 'Robust database systems for data management',
+      subcategories: servicesData.softwareDBMS,
+    },
+    {
+      id: 'software-automation',
+      title: 'Automation Tools',
+      icon: Cog,
+      color: 'marketing2' as ServiceColor,
+      description: 'Streamline workflows with intelligent automation',
+      subcategories: servicesData.softwareAutomation,
+    },
+    {
+      id: 'digital',
+      title: 'Digital Products',
+      icon: Palette,
+      color: 'digital2' as ServiceColor,
+      description: 'Stunning designs that capture attention',
+      subcategories: servicesData.digital,
+    },
+    {
+      id: 'branding',
+      title: 'Branding & Design',
+      icon: PenTool,
+      color: 'branding2' as ServiceColor,
+      description: 'Brand identity that stands out',
+      subcategories: servicesData.branding,
+    },
+    // {
+    //   id: 'marketing',
+    //   title: 'Marketing Automation',
+    //   icon: TrendingUp,
+    //   color: 'marketing' as ServiceColor,
+    //   description: 'Automated campaigns that convert',
+    //   subcategories: servicesData.marketing,
+    // },
+  ];
+
+  // Ambient glow loop - random card pulses every 6 seconds
+  useEffect(() => {
+    if (liteMode) return;
+    
+    const interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * serviceCategories.length);
+      const randomId = serviceCategories[randomIndex].id;
+      setHoveredCard(randomId);
+      setTimeout(() => setHoveredCard(null), 1500);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [liteMode]);
+
+  const handleCardClick = (categoryId: string) => {
+    setExpandedService(expandedService === categoryId ? null : categoryId);
+    
+    // Smooth scroll to expanded section
+    setTimeout(() => {
+      const element = document.getElementById(`service-${categoryId}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
+  const getColorClasses = (color: ServiceColor) => {
+    const colorMap = {
+      software: {
+        bg: 'bg-service-software/20',
+        border: 'border-service-software/30',
+        text: 'text-service-software',
+        glow: 'text-service-software-glow',
+        gradient: 'from-service-software to-service-software-glow',
+        hover: 'hover:border-service-software hover:shadow-[0_0_20px_hsl(var(--service-software)/0.3)]',
+      },
+      digital: {
+        bg: 'bg-service-digital/20',
+        border: 'border-service-digital/30',
+        text: 'text-service-digital',
+        glow: 'text-service-digital-glow',
+        gradient: 'from-service-digital to-service-digital-glow',
+        hover: 'hover:border-service-digital hover:shadow-[0_0_20px_hsl(var(--service-digital)/0.3)]',
+      },
+       digital2: {
+        bg: 'bg-service-digital/20',
+        border: 'border-service-digital/30',
+        text: 'text-service-digital',
+        glow: 'text-service-digital-glow',
+        gradient: 'from-service-digital-glow to-service-digital',
+        hover: 'hover:border-service-digital hover:shadow-[0_0_20px_hsl(var(--service-digital)/0.3)]',
+      },
+      branding: {
+        bg: 'bg-service-branding/20',
+        border: 'border-service-branding/30',
+        text: 'text-service-branding',
+        glow: 'text-service-branding-glow',
+        gradient: 'from-service-branding to-service-branding-glow',
+        hover: 'hover:border-service-branding hover:shadow-[0_0_20px_hsl(var(--service-branding)/0.3)]',
+      },
+       branding2: {
+        bg: 'bg-service-branding/20',
+        border: 'border-service-branding/30',
+        text: 'text-service-branding',
+        glow: 'text-service-branding-glow',
+        gradient: 'from-service-branding-glow to-service-branding',
+        hover: 'hover:border-service-branding hover:shadow-[0_0_20px_hsl(var(--service-branding)/0.3)]',
+      },
+      marketing: {
+        bg: 'bg-service-marketing/20',
+        border: 'border-service-marketing/30',
+        text: 'text-service-marketing',
+        glow: 'text-service-marketing-glow',
+        gradient: 'from-service-marketing to-service-marketing-glow',
+        hover: 'hover:border-service-marketing hover:shadow-[0_0_20px_hsl(var(--service-marketing)/0.3)]',
+      },
+       marketing2: {
+        bg: 'bg-service-marketing/20',
+        border: 'border-service-marketing/30',
+        text: 'text-service-marketing',
+        glow: 'text-service-marketing-glow',
+        gradient: 'from-service-marketing-glow to-service-marketing',
+        hover: 'hover:border-service-marketing hover:shadow-[0_0_20px_hsl(var(--service-marketing)/0.3)]',
+      },
+    };
+    return colorMap[color];
+  };
 
   return (
-    <section className="relative w-full min-h-screen bg-green-900 text-white flex flex-col items-center py-20 px-4">
-      <h2 className="text-4xl font-bold mb-12">Our Services</h2>
-
-      <div className="relative w-full flex flex-wrap justify-center gap-12">
-        {servicesData.map((service, idx) => (
-          <motion.div
-            key={idx}
-            className="relative w-48 h-48 flex flex-col items-center justify-center cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            onClick={() => setSelected(idx)}
-          >
-            {/* Central Glowing Icon */}
-            <motion.div
-              className="text-6xl text-green-300 mb-2"
-              animate={{ rotate: [0, 360, 0] }}
-              transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-            >
-              {service.icons.map((Icon, i) => <Icon key={i} />)}
-            </motion.div>
-
-            <h3 className="text-xl font-semibold text-center">{service.title}</h3>
-
-            {/* Orbiting emojis */}
-            {service.emojis.map((emoji, i) => (
-              <motion.div
-                key={i}
-                className="absolute text-2xl"
-                style={{ top: 0, left: "50%" }}
-                animate={{
-                  rotate: [0, 360],
-                  x: [0, Math.cos(i) * 80],
-                  y: [0, Math.sin(i) * 80],
-                }}
-                transition={{ repeat: Infinity, duration: 10 + i * 2, ease: "linear" }}
-              >
-                {emoji}
-              </motion.div>
-            ))}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Carousel Modal */}
-      {selected !== null && (
-        <motion.div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-          onClick={() => setSelected(null)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          <motion.div
-            className="bg-green-800 p-8 rounded-xl w-96"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-          >
-            <h3 className="text-2xl font-bold mb-4">{servicesData[selected].title}</h3>
-            <ul className="space-y-2">
-              {servicesData[selected].products.map((p, i) => (
-                <li key={i}>
-                  <a href={p.url} target="_blank" className="text-green-200 hover:text-green-100 underline">
-                    {p.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </motion.div>
+    <section ref={sectionRef} className="relative py-24 overflow-hidden">
+      {/* Background with subtle gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-forest-deep/50 to-background" />
+      
+      {/* Floating particle overlay */}
+      {!liteMode && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-leaf-light/40 rounded-full animate-particle-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: `${3 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
       )}
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header */}
+        <ScrollReveal disabled={liteMode}>
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+              animate={!liteMode ? {
+                textShadow: [
+                  '0 0 20px rgba(102, 187, 106, 0.5)',
+                  '0 0 40px rgba(102, 187, 106, 0.8)',
+                  '0 0 20px rgba(102, 187, 106, 0.5)',
+                ],
+              } : {}}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              Our Services
+            </motion.h2>
+          </div>
+        </ScrollReveal>
+
+        {/* Service Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
+          {serviceCategories.map((category, index) => {
+            const Icon = category.icon;
+            const isExpanded = expandedService === category.id;
+            const isHovered = hoveredCard === category.id;
+            const colors = getColorClasses(category.color);
+
+            return (
+              <ScrollReveal 
+                key={category.id}
+                delay={index * 0.1}
+                disabled={liteMode}
+              >
+                <motion.button
+                  whileHover={!liteMode ? { scale: 1.02, y: -4 } : {}}
+                  whileTap={!liteMode ? { scale: 0.98 } : {}}
+                  onClick={() => handleCardClick(category.id)}
+                  onMouseEnter={() => setHoveredCard(category.id)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                  className={`
+                    group relative w-full glass-card rounded-2xl p-8 text-left
+                    transition-all duration-400 border-2
+                    ${colors.border} ${colors.hover}
+                    ${isExpanded ? 'ring-2 ring-current ' + colors.text : ''}
+                    ${isHovered && !liteMode ? 'animate-tilt-hover' : ''}
+                  `}
+                >
+                  {/* Glow effect */}
+                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 ${colors.bg} blur-xl`} />
+                  
+                  {/* Icon Container */}
+                  <div className="relative flex items-start justify-between mb-4">
+                    <div className={`w-16 h-16 rounded-xl ${colors.bg} flex items-center justify-center ${!liteMode ? 'group-hover:animate-icon-morph' : ''}`}>
+                      <Icon className={colors.text} size={32} strokeWidth={2} />
+                    </div>
+                    <ChevronDown
+                      className={`${colors.text} transition-transform duration-300 ${
+                        isExpanded ? 'rotate-180' : ''
+                      }`}
+                      size={24}
+                    />
+                  </div>
+
+                  {/* Title with gradient */}
+                  <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>
+                    {category.title}
+                  </h3>
+                  <p className="text-muted-foreground">{category.description}</p>
+
+                  {/* Hover particle burst */}
+                  {!liteMode && isHovered && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
+                      {[...Array(8)].map((_, i) => (
+                        <div
+                          key={i}
+                          className={`absolute w-1.5 h-1.5 ${colors.bg} rounded-full animate-particle-float`}
+                          style={{
+                            left: '50%',
+                            top: '50%',
+                            transform: `rotate(${i * 45}deg) translateX(40px)`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </motion.button>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+
+        {/* Expanded Subsections */}
+        {serviceCategories.map((category) => {
+          const isExpanded = expandedService === category.id;
+          const colors = getColorClasses(category.color);
+
+          return (
+            isExpanded && (
+              <div
+                key={`${category.id}-expanded`}
+                id={`service-${category.id}`}
+                className="animate-leaf-bloom mb-16 scroll-mt-24"
+              >
+                <div className={`glass-card rounded-3xl p-8 border-2 ${colors.border}`}>
+                  {Object.entries(category.subcategories).map(([subKey, subData], subIndex) => (
+                    <div 
+                      key={subKey} 
+                      className="mb-12 last:mb-0 animate-fade-in"
+                      style={{ animationDelay: `${subIndex * 0.1}s` }}
+                    >
+                      {/* Subsection Title */}
+                      <h4 className={`text-2xl font-semibold mb-6 flex items-center gap-3 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>
+                        <div className={`w-2 h-2 rounded-full ${colors.bg} ${!liteMode ? 'animate-pulse' : ''}`} />
+                        {subData.title}
+                      </h4>
+
+                      {/* Example Cards Grid */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {subData.examples.map((example, exIndex) => (
+                          <div
+                            key={exIndex}
+                            className="animate-fade-in-up"
+                            style={{ animationDelay: `${(subIndex * 0.1) + (exIndex * 0.15)}s` }}
+                          >
+                            <EnhancedServiceCard
+                              example={example}
+                              color={category.color}
+                              liteMode={liteMode}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          );
+        })}
+      </div>
     </section>
   );
 };
 
 export default Services;
-
