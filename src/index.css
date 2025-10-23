@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* 🌲 Forest Theme - Mavon Design System (Balanced + More Image Visibility) */
+
+    /* Base Colors */
+    --background: 120 30% 10%;         /* darker base to make bright image pop more // changed */
+    --foreground: 127 50% 97%;         /* slightly brighter text // changed */
+
+    /* Forest Palette */
+    --forest-deep: 120 35% 15%;        /* reduced darkness // changed */
+    --forest-canopy: 120 30% 22%;
+    --leaf-green: 127 45% 52%;
+    --leaf-light: 127 50% 68%;         /* more highlight for accents // changed */
+    --earth-brown: 20 25% 28%;
+    --mist: 0 0% 98%;
+
+    /* Service Category Colors */
+    --service-software: 134 39% 46%;
+    --service-software-glow: 145 100% 82%;
+    --service-software-accent: 175 100% 18%;
+    
+    --service-digital: 207 80% 51%;
+    --service-digital-glow: 199 100% 75%;
+    --service-digital-accent: 214 100% 33%;
+    
+    --service-branding: 291 64% 42%;
+    --service-branding-glow: 291 47% 79%;
+    --service-branding-accent: 291 89% 22%;
+    
+    --service-marketing: 30 100% 49%;
+    --service-marketing-glow: 36 100% 75%;
+    --service-marketing-accent: 22 100% 45%;
+
+    /* Semantic Colors */
+    --card: 120 45% 15%;
+    --card-foreground: 127 53% 95%;
+    --card-glow: 127 53% 51%;
+    
+    --popover: 120 55% 12%;
+    --popover-foreground: 127 53% 95%;
+    
+    --primary: 127 53% 51%;
+    --primary-foreground: 120 70% 8%;
+    --primary-glow: 127 53% 68%;       /* stronger glow for contrast // changed */
+    
+    --secondary: 178 85% 38%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 178 85% 55%;
+    
+    --muted: 120 30% 25%;
+    --muted-foreground: 127 25% 75%;   /* slightly lighter muted text // changed */
+    
+    --accent: 45 100% 70%;
+    --accent-foreground: 120 70% 13%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 120 30% 25%;
+    --input: 120 30% 20%;
+    --ring: 127 53% 51%;
+    
+    /* Gradients (made overlays lighter to reveal more image) */
+    --gradient-forest: linear-gradient(180deg, hsl(120, 70%, 8% / 0.7) 0%, hsl(120, 45%, 18% / 0.5) 100%); /* changed */
+    --gradient-leaf: linear-gradient(135deg, hsl(127, 53%, 51%) 0%, hsl(178, 85%, 38%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(127, 53%, 51% / 0.15) 0%, transparent 70%); /* more transparent */
+    --gradient-holographic: linear-gradient(135deg, hsl(127, 53%, 51%) 0%, hsl(178, 85%, 38%) 25%, hsl(256, 92%, 76%) 50%, hsl(201, 100%, 74%) 75%, hsl(45, 100%, 70%) 100%);
+    
+    /* Section Background */
+    --gradient-services-bg: linear-gradient(160deg, hsl(127, 45%, 96%) 0%, hsl(145, 55%, 92%) 100%);
+    
+    /* Glass Effect */
+    --glass-bg: hsl(120, 45%, 15% / 0.45);  /* lighter opacity to let image show through // changed */
+    --glass-border: hsl(127, 53%, 51% / 0.25);
+    --glass-glow: hsl(127, 53%, 51% / 0.12);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(120, 70%, 13% / 0.35);
+    --shadow-glow: 0 0 40px hsl(127, 53%, 51% / 0.25);
+    --shadow-glow-strong: 0 0 60px hsl(127, 53%, 51% / 0.4);
+    --shadow-card: 0 8px 32px hsl(120, 70%, 8% / 0.5);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--forest-deep));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--leaf-green));
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--leaf-light));
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-holographic {
+    background: var(--gradient-holographic);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: holographic-shift 3s ease-in-out infinite;
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-strong {
+    box-shadow: var(--shadow-glow-strong);
+  }
+
+  .hover-tilt {
+    transition: var(--transition-smooth);
+    transform-style: preserve-3d;
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(1000px) rotateX(-4deg) translateY(-8px);
+    box-shadow: var(--shadow-glow-strong);
+  }
+
+  .cursor-firefly {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%233AC34F" opacity="0.6"/><circle cx="12" cy="12" r="3" fill="%23FFD966"/></svg>') 12 12, auto;
+  }
+}
+
+@layer utilities {
+  .fade-out {
+    animation: fade-out 1s ease-out forwards;
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
