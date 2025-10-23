@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaDesktop, FaLaptop, FaMobileAlt, FaRobot, FaDatabase, FaCog, FaEnvelope, FaPaintBrush, FaTag } from "react-icons/fa";
+import { FaDesktop } from "react-icons/fa";
+import { FaLaptop } from "react-icons/fa";
+import { FaMobileAlt } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa";
+import { FaDatabase } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
+import { FaPaintBrush } from "react-icons/fa";
+import { FaTag } from "react-icons/fa";
+
+ 
 
 const servicesData = [
   {
