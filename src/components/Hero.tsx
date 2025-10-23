@@ -9,12 +9,12 @@ const Hero = () => {
       {/* Parallax Forest Layers */}
       <div className="absolute inset-0">
         <motion.div
-          className="absolute w-full h-full bg-[url('/forest-layer1.png')] bg-cover bg-center"
+          className="absolute w-full h-full bg-[url('/forest-layer1.jpg')] bg-cover bg-center"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute w-full h-full bg-[url('/forest-layer2.png')] bg-cover bg-center opacity-80"
+          className="absolute w-full h-full bg-[url('/forest-layer2.jpg')] bg-cover bg-center opacity-80"
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
         />
