@@ -1,128 +1,87 @@
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Sparkles, Lightbulb, Star } from 'lucide-react';
-import heroForest from '@/assets/hero-forest.jpg';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaRocket, FaLightbulb, FaDesktop } from 'react-icons/fa';
 
-interface HeroProps {
-  onScrollToServices: () => void;
-  liteMode: boolean;
-}
-
-const Hero = ({ onScrollToServices, liteMode }: HeroProps) => {
+const Hero = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroForest}
-          alt="Bioluminescent forest"
-          className="w-full h-full object-cover"
-          loading="eager"
+    <section className="relative w-full min-h-screen bg-gradient-to-b from-green-900 via-green-800 to-green-700 overflow-hidden flex flex-col justify-center items-center text-center text-white px-4">
+      
+      {/* Parallax Forest Layers */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute w-full h-full bg-[url('/forest-layer1.png')] bg-cover bg-center"
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-deep/80 via-forest-deep/60 to-background" />
-
-        {/* Mist effect */}
-        {!liteMode && (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-leaf/10 to-transparent animate-shimmer" />
-            <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent" />
-          </>
-        )}
+        <motion.div
+          className="absolute w-full h-full bg-[url('/forest-layer2.png')] bg-cover bg-center opacity-80"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </div>
 
-      {/* Fireflies */}
-      {!liteMode && (
-        <div className="absolute inset-0 z-10">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-amber rounded-full animate-firefly opacity-60"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${4 + Math.random() * 2}s`,
-              }}
-            />
+      {/* Hero Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative z-10"
+      >
+        <h1 className="text-5xl md:text-6xl font-bold mb-4">
+          Technology Solutions
+        </h1>
+        <p className="text-xl md:text-2xl mb-8">
+          Moving Innovation Forward
+        </p>
+
+        {/* Floating Icons */}
+        <div className="flex justify-center gap-6 mb-8">
+          {[FaLightbulb, FaRocket, FaDesktop].map((Icon, idx) => (
+            <motion.div
+              key={idx}
+              className="text-green-200 text-4xl cursor-pointer"
+              whileHover={{ scale: 1.3, rotate: 10, color: "#A5D6A7" }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
+              <Icon />
+            </motion.div>
           ))}
         </div>
-      )}
 
-      {/* Content */}
-      <div className="relative z-20 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-in-up">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 animate-scale-in">
-            <Sparkles className="text-leaf" size={16} />
-            <span className="text-sm text-leaf-light font-medium">Technology Solutions</span>
-          </div>
-
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-holographic animate-fade-in">
-            Moving Innovation Forward
-          </h1>
-
-          {/* Subheading */}
-          <p
-            className="text-xl md:text-2xl text-foreground/90 mb-8 max-w-2xl mx-auto animate-fade-in"
-            style={{ animationDelay: '0.1s' }}
+        {/* Buttons */}
+        <div className="flex justify-center gap-6">
+          <motion.button
+            whileHover={{ scale: 1.1, boxShadow: '0px 0px 20px #A5D6A7' }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-green-600 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg relative overflow-hidden"
+            onClick={() => alert("Explore Services Clicked!")}
           >
-            Futuristic software solutions
-          </p>
+            Explore Services
+            {/* Leaf Burst Animation */}
+            <span className="absolute top-0 left-0 w-full h-full pointer-events-none">
+              🍃
+            </span>
+          </motion.button>
 
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in"
-            style={{ animationDelay: '0.2s' }}
+          <motion.button
+            whileHover={{ scale: 1.1, boxShadow: '0px 0px 20px #A5D6A7' }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-green-700 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg relative overflow-hidden"
+            onClick={() => alert("Get in Touch Clicked!")}
           >
-            <Button
-              size="lg"
-              onClick={onScrollToServices}
-              className="bg-primary hover:bg-primary-glow text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl hover-tilt glow group"
-            >
-              Explore Services
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="glass-card hover:glow px-8 py-6 text-lg rounded-xl hover-tilt"
-            >
-              Get in Touch
-            </Button>
-          </div>
-
-          {/* Stats / Icons */}
-          <div
-            className="grid grid-cols-3 gap-8 mt-20 max-w-3xl mx-auto animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
-          >
-            {[
-              { icon: <Lightbulb size={60} className="text-holographic" />, label: 'Innovation     ' },
-              { icon: <Star size={60} className="text-holographic" />, label: 'Excellence    ' },
-              { icon: <Sparkles size={60} className="text-holographic" />, label: 'Creativity    ' },
-            ].map((stat, index) => (
-              <div
-                key={index}
-                className="glass-card rounded-xl p-6 hover-tilt transition transform hover:scale-105 hover:shadow-[0_0_15px_rgba(0,255,255,0.4)]"
-              >
-                {/* Icon */}
-                <div className="flex justify-center mb-2 transition-all duration-300">
-                  {stat.icon}
-                </div>
-
-                {/* Label */}
-                <div className="text-sm text-muted-foreground text-center">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+            Get in Touch
+            <span className="absolute top-0 left-0 w-full h-full pointer-events-none">
+              🍃
+            </span>
+          </motion.button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
 
 export default Hero;
+
 
 // import { Button } from '@/components/ui/button';
 // import { ArrowRight, Sparkles, Lightbulb, Star } from 'lucide-react';
