@@ -74,18 +74,11 @@ const Contact = ({ liteMode }: ContactProps) => {
       <div className="max-w-4xl mx-auto relative z-10">
         <ScrollReveal disabled={liteMode}>
           <div className="text-center mb-12">
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
-              animate={!liteMode ? {
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-              } : {}}
-              transition={{ duration: 5, repeat: Infinity }}
-              style={{ backgroundSize: '200% auto' }}
-            >
-              Get in Touch
-            </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
             <p className="text-xl text-muted-foreground">
-              Let's bring your ideas to life. Reach out and we'll respond within 24 hours.
+              Let's discuss how we can help transform your business
             </p>
           </div>
         </ScrollReveal>

@@ -78,13 +78,12 @@ function FloatingParticles({ count = 2000 }: FloatingParticlesProps) {
 
 export default function ParticleSystem() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ alpha: true, antialias: true }}
-      >
-        <FloatingParticles />
-      </Canvas>
-    </div>
+    <Canvas
+      camera={{ position: [0, 0, 5], fov: 75 }}
+      gl={{ alpha: true, antialias: true }}
+      style={{ width: '100%', height: '100%' }}
+    >
+      <FloatingParticles />
+    </Canvas>
   );
 }

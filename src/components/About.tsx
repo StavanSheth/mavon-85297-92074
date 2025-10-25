@@ -73,18 +73,11 @@ const About = ({ liteMode }: AboutProps) => {
 
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
-            animate={!liteMode ? {
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            } : {}}
-            transition={{ duration: 5, repeat: Infinity }}
-            style={{ backgroundSize: '200% auto' }}
-          >
-            About Mavon
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            About Us
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Moving Innovation Forward with sustainable technology solutions
+            Pioneering the future of technology solutions
           </p>
         </div>
       </ScrollReveal>

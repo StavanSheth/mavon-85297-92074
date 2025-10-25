@@ -79,16 +79,9 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
 
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
-            animate={!liteMode ? {
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            } : {}}
-            transition={{ duration: 5, repeat: Infinity }}
-            style={{ backgroundSize: '200% auto' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ff8c42] via-[#6366f1] to-[#10b981] bg-clip-text text-transparent">
             Our Solutions
-          </motion.h2>
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Comprehensive technology solutions tailored to your business needs
           </p>

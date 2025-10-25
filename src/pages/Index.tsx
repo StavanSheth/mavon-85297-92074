@@ -26,7 +26,11 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden cursor-firefly">
       {/* 3D Particle System */}
-      {!liteMode && <ParticleSystem />}
+      {!liteMode && (
+        <div className="fixed inset-0 pointer-events-none z-0">
+          <ParticleSystem />
+        </div>
+      )}
       
       {/* Parallax Background Layers */}
       {!liteMode && <ParallaxBackground />}
