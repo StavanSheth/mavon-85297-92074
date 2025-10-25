@@ -120,7 +120,7 @@ const Contact = ({ liteMode }: ContactProps) => {
                       <Icon className={method.color} size={24} />
                     </motion.div>
                     <div>
-                      <h3 className={`font-semibold mb-1 ${method.color}`}>
+                      <h3 className={`font-bold mb-1 ${method.color}`}>
                         {method.title}
                       </h3>
                       {method.type === 'phone' && method.phones ? (

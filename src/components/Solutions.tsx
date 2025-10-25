@@ -121,7 +121,7 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
                       <Icon className={`w-6 h-6 ${solution.color}`} />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r from-${solution.color} to-${solution.color}-glow bg-clip-text text-transparent`}>
+                      <h3 className={`text-2xl font-bold mb-2 ${solution.color}`}>
                         {solution.title}
                       </h3>
                       <p className="text-muted-foreground">
