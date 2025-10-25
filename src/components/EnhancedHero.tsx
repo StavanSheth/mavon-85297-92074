@@ -221,7 +221,7 @@ const EnhancedHero = ({ onScrollToServices, liteMode }: EnhancedHeroProps) => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      {/* <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
@@ -233,7 +233,7 @@ const EnhancedHero = ({ onScrollToServices, liteMode }: EnhancedHeroProps) => {
             transition={{ duration: 2, repeat: Infinity }}
           />
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };
