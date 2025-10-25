@@ -15,7 +15,7 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
       bgColor: 'bg-service-marketing/20',
       borderColor: 'border-service-marketing/30',
       glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-marketing)/0.4)]',
-      description: 'Scalable systems designed for growing businesses',
+      description: '',
       features: ['Custom ERP Systems', 'Business Intelligence', 'Process Automation']
     },
     {
@@ -25,7 +25,7 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
       bgColor: 'bg-service-digital/20',
       borderColor: 'border-service-digital/30',
       glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-digital)/0.4)]',
-      description: 'Fast-track your digital transformation',
+      description: '',
       features: ['MVP Development', 'Prototype Design', 'Quick Deployment']
     },
     {
@@ -35,7 +35,7 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
       bgColor: 'bg-service-branding/20',
       borderColor: 'border-service-branding/30',
       glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-branding)/0.4)]',
-      description: 'Enterprise-grade security for your applications',
+      description: '',
       features: ['Data Encryption', 'Compliance Management', 'Security Audits']
     },
     {
@@ -45,7 +45,7 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
       bgColor: 'bg-primary/20',
       borderColor: 'border-primary/30',
       glowColor: 'hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]',
-      description: 'Tools to scale your business effectively',
+      description: '',
       features: ['Analytics Dashboard', 'Performance Monitoring', 'Growth Strategy']
     }
   ];
