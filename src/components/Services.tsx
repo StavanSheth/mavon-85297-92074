@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Monitor, Smartphone, Database, Cog, Palette, PenTool, ChevronDown, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
-import EnhancedServiceCard from './EnhancedServiceCard';
+import ServiceCard from './ServiceCard';
 import ScrollReveal from './ScrollReveal';
 import { servicesData } from '@/lib/servicesData';
 
@@ -311,7 +311,7 @@ const Services = ({ liteMode }: ServicesProps) => {
                             className="animate-fade-in-up"
                             style={{ animationDelay: `${(subIndex * 0.1) + (exIndex * 0.15)}s` }}
                           >
-                            <EnhancedServiceCard
+                            <ServiceCard
                               example={example}
                               color={category.color}
                               liteMode={liteMode}
