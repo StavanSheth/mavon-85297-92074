@@ -122,13 +122,13 @@ export const servicesData = {
         {
           title: 'Holi Greeting Post',
           description: 'Beautiful festival greeting with traditional design elements.',
-          image: festivalDiwali,
+          image: holi,
           demoUrl: 'https://www.instagram.com/p/DQGESoAD0vI/?igsh=MWF1OGxhMG9rM3k0bw==',
         },
         {
           title: 'Dhanteras Celebration',
           description: 'Modern greeting with animated elements.',
-          image: festivalDiwali,
+          image: dhantera,
           demoUrl: 'https://www.instagram.com/p/DQFC1EWDLpu/?igsh=MW5pdDQxb3FnY2Q5YQ==',
         },
       ],
@@ -164,7 +164,7 @@ export const servicesData = {
         {
           title: 'Mascot Logo',
           description: 'Toyverse- Friendly character-based brand identity.',
-          image: logo3d,
+          image: toyversemascot,
           demoUrl: 'https://www.instagram.com/p/DQFCuhSDCVg/?igsh=MXRubmx3bzZrODRyaw==',
         },
       ],
@@ -181,7 +181,7 @@ export const servicesData = {
         {
           title: 'Product Catalog',
           description: 'Ecovia Living- Interactive product showcase with specifications.',
-          image: brochureFlipbook,
+          image: ecoviabrochure,
           demoUrl: 'https://www.instagram.com/p/DQFB-FeDHo7/?igsh=emQ3MXVpMXVsY2V1',
         },
       ],
