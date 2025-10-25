@@ -1,5 +1,9 @@
 // Services data structure with placeholder URLs for developer to replace
 // Instructions: Replace all "REPLACE_WITH_URL_*" strings with actual project URLs
+import dhanteras from '@/assets/examples/dhanteras-erp.jpg';
+import holi from '@/assets/examples/holi-erp.jpg';
+import ecoviabrochure from '@/assets/examples/ecoviabrochure-erp.jpg';
+import toyversemascot from '@/assets/examples/toyversemascot-erp.jpg';
 
 import smartschoolErp from '@/assets/examples/smartschool-erp.jpg';
 import retailPos from '@/assets/examples/retail-pos.jpg';
