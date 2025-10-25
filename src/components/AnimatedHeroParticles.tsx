@@ -1,6 +1,6 @@
-// import { Canvas, useFrame } from '@react-three/fiber';
-// import { useRef } from 'react';
-// import * as THREE from 'three';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import * as THREE from 'three';
 
 function FloatingIcons() {
   const groupRef = useRef<THREE.Group>(null);
@@ -36,7 +36,7 @@ function FloatingIcons() {
         if (el) icons.current[index] = el;
       }}
     >
-      <sphereGeometry args={[0.2, 16, 16]} />
+      <sphereGeometry args={[0, 0, 0]} />
       <meshStandardMaterial
         color={index % 3 === 0 ? '#66BB6A' : index % 3 === 1 ? '#FFD966' : '#64B5F6'}
         emissive={index % 3 === 0 ? '#66BB6A' : index % 3 === 1 ? '#FFD966' : '#64B5F6'}
