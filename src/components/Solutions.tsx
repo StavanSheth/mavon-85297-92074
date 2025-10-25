@@ -79,8 +79,8 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
 
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#ff8c42] via-[#6366f1] to-[#10b981] bg-clip-text text-transparent">
-            Our Solutions
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              Our Solutions
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Comprehensive technology solutions tailored to your business needs
