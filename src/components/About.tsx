@@ -14,7 +14,7 @@ const About = ({ liteMode }: AboutProps) => {
       color: 'text-service-marketing',
       bgColor: 'bg-service-marketing/20',
       borderColor: 'border-service-marketing/30',
-      description: 'To deliver innovative technology solutions that empower businesses while maintaining environmental responsibility.'
+      description: 'To deliver innovative technology solutions that empower businesses.'
     },
     {
       icon: Users,
@@ -30,7 +30,7 @@ const About = ({ liteMode }: AboutProps) => {
       color: 'text-service-branding',
       bgColor: 'bg-service-branding/20',
       borderColor: 'border-service-branding/30',
-      description: 'Building eco-conscious solutions that grow with nature and contribute to a sustainable future.'
+      description: 'Building conscious solutions that grow with nature and contribute to better future.'
     },
     {
       icon: Award,
@@ -89,7 +89,7 @@ const About = ({ liteMode }: AboutProps) => {
             whileHover={!liteMode ? { scale: 1.01, boxShadow: '0 0 40px rgba(102, 187, 106, 0.3)' } : {}}
           >
             <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-              At Mavon, we believe in the power of technology to transform businesses while preserving our planet. 
+              At Mavon, we believe in the power of technology to transform businesses. 
               Our team combines cutting-edge development practices with sustainable approaches to create solutions 
               that not only meet your needs today but also contribute to a better tomorrow.
             </p>
