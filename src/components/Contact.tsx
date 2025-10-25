@@ -11,9 +11,9 @@ const Contact = ({ liteMode }: ContactProps) => {
     {
       icon: Mail,
       title: 'Email Us',
-      color: 'text-service-digital',
-      bgColor: 'bg-service-digital/20',
-      borderColor: 'border-service-digital/30',
+      color: 'text-service-marketing',
+      bgColor: 'bg-service-marketing/20',
+      borderColor: 'border-service-marketing/30',
       link: 'https://mail.google.com/mail/?view=cm&fs=1&to=mavontechsolutions@gmail.com',
       text: 'mavontechsolutions@gmail.com',
       type: 'email'
@@ -21,9 +21,9 @@ const Contact = ({ liteMode }: ContactProps) => {
     {
       icon: MessageSquare,
       title: 'Contact Us',
-      color: 'text-primary',
-      bgColor: 'bg-primary/20',
-      borderColor: 'border-primary/30',
+      color: 'text-service-digital',
+      bgColor: 'bg-service-digital/20',
+      borderColor: 'border-service-digital/30',
       phones: [
         { number: '+91 7678046520', link: 'tel:7678046520' },
         { number: '+91 7977457097', link: 'tel:7977457097' }
@@ -75,15 +75,12 @@ const Contact = ({ liteMode }: ContactProps) => {
         <ScrollReveal disabled={liteMode}>
           <div className="text-center mb-12">
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+              className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
               animate={!liteMode ? {
-                textShadow: [
-                  '0 0 20px rgba(102, 187, 106, 0.5)',
-                  '0 0 40px rgba(102, 187, 106, 0.8)',
-                  '0 0 20px rgba(102, 187, 106, 0.5)',
-                ],
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
               } : {}}
-              transition={{ duration: 2, repeat: Infinity }}
+              transition={{ duration: 5, repeat: Infinity }}
+              style={{ backgroundSize: '200% auto' }}
             >
               Get in Touch
             </motion.h2>

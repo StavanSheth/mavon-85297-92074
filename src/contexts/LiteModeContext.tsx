@@ -8,7 +8,7 @@ interface LiteModeContextType {
 const LiteModeContext = createContext<LiteModeContextType | undefined>(undefined);
 
 export const LiteModeProvider = ({ children }: { children: ReactNode }) => {
-  const [liteMode, setLiteMode] = useState(false);
+  const [liteMode, setLiteMode] = useState(true);
 
   const toggleLiteMode = () => {
     setLiteMode(prev => !prev);

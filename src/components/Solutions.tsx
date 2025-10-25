@@ -11,10 +11,10 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
     {
       icon: Package,
       title: 'Enterprise Solutions',
-      color: 'text-service-software',
-      bgColor: 'bg-service-software/20',
-      borderColor: 'border-service-software/30',
-      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-software)/0.4)]',
+      color: 'text-service-marketing',
+      bgColor: 'bg-service-marketing/20',
+      borderColor: 'border-service-marketing/30',
+      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-marketing)/0.4)]',
       description: 'Scalable systems designed for growing businesses',
       features: ['Custom ERP Systems', 'Business Intelligence', 'Process Automation']
     },
@@ -31,20 +31,20 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
     {
       icon: Shield,
       title: 'Secure Infrastructure',
-      color: 'text-primary',
-      bgColor: 'bg-primary/20',
-      borderColor: 'border-primary/30',
-      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]',
+      color: 'text-service-branding',
+      bgColor: 'bg-service-branding/20',
+      borderColor: 'border-service-branding/30',
+      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-branding)/0.4)]',
       description: 'Enterprise-grade security for your applications',
       features: ['Data Encryption', 'Compliance Management', 'Security Audits']
     },
     {
       icon: TrendingUp,
       title: 'Growth Solutions',
-      color: 'text-service-branding',
-      bgColor: 'bg-service-branding/20',
-      borderColor: 'border-service-branding/30',
-      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--service-branding)/0.4)]',
+      color: 'text-primary',
+      bgColor: 'bg-primary/20',
+      borderColor: 'border-primary/30',
+      glowColor: 'hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]',
       description: 'Tools to scale your business effectively',
       features: ['Analytics Dashboard', 'Performance Monitoring', 'Growth Strategy']
     }
@@ -80,15 +80,12 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
             animate={!liteMode ? {
-              textShadow: [
-                '0 0 20px rgba(102, 187, 106, 0.5)',
-                '0 0 40px rgba(102, 187, 106, 0.8)',
-                '0 0 20px rgba(102, 187, 106, 0.5)',
-              ],
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
             } : {}}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 5, repeat: Infinity }}
+            style={{ backgroundSize: '200% auto' }}
           >
             Our Solutions
           </motion.h2>

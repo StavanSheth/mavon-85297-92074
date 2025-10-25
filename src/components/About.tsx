@@ -27,17 +27,17 @@ const About = ({ liteMode }: AboutProps) => {
     {
       icon: Leaf,
       title: 'Sustainability',
-      color: 'text-primary',
-      bgColor: 'bg-primary/20',
-      borderColor: 'border-primary/30',
+      color: 'text-service-branding',
+      bgColor: 'bg-service-branding/20',
+      borderColor: 'border-service-branding/30',
       description: 'Building eco-conscious solutions that grow with nature and contribute to a sustainable future.'
     },
     {
       icon: Award,
       title: 'Excellence Focused',
-      color: 'text-service-branding',
-      bgColor: 'bg-service-branding/20',
-      borderColor: 'border-service-branding/30',
+      color: 'text-primary',
+      bgColor: 'bg-primary/20',
+      borderColor: 'border-primary/30',
       description: 'Building the Future'
     }
   ];
@@ -74,15 +74,12 @@ const About = ({ liteMode }: AboutProps) => {
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+            className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-service-marketing via-service-digital to-service-branding bg-clip-text text-transparent"
             animate={!liteMode ? {
-              textShadow: [
-                '0 0 20px rgba(102, 187, 106, 0.5)',
-                '0 0 40px rgba(102, 187, 106, 0.8)',
-                '0 0 20px rgba(102, 187, 106, 0.5)',
-              ],
+              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
             } : {}}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 5, repeat: Infinity }}
+            style={{ backgroundSize: '200% auto' }}
           >
             About Mavon
           </motion.h2>
