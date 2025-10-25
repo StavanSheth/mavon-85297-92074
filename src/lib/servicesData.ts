@@ -132,7 +132,7 @@ export const servicesData = {
         {
           title: 'Dhanteras Celebration',
           description: 'Modern greeting with animated elements.',
-          image: dhantera,
+          image: dhanteras,
           demoUrl: 'https://www.instagram.com/p/DQFC1EWDLpu/?igsh=MW5pdDQxb3FnY2Q5YQ==',
         },
       ],
@@ -144,7 +144,7 @@ export const servicesData = {
           title: 'Festival Greeting Post',
           description: 'Green-Edge Organics Pongal Festival Post Eye catching promotional post.',
           image: businessOffer,
-          demoUrl: 'REPLACE_WITH_URL_OFFER',
+          demoUrl: 'https://www.instagram.com/reel/DQFCXGSDLFy/?igsh=MTNneHpndzVwOGVudg==',
         },
         {
           title: 'Product Launch Post',
