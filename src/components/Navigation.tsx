@@ -87,7 +87,7 @@ export const Navigation = () => {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <button
-            className="fixed top-6 left-6 z-50 p-3 rounded-full backdrop-blur-xl bg-card/30 border border-primary/20 shadow-glow hover:bg-card/50 transition-all duration-300 hover:scale-110"
+            className="fixed top-4 left-6 z-50 p-3 rounded-full backdrop-blur-xl bg-card/30 border border-primary/20 shadow-glow hover:bg-card/50 transition-all duration-300 hover:scale-110"
             aria-label="Open navigation menu"
           >
             <Menu className="w-6 h-6 text-primary" />
