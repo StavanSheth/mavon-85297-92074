@@ -69,14 +69,14 @@ export const Navigation = () => {
     <>
       {/* Top Header with Logo and Name */}
       <header className="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-background/80 border-b border-primary/20">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-center">
           <div className="flex items-center gap-3">
             <img 
               src={mavonLogo} 
               alt="Mavon Logo" 
               className="w-12 h-12 rounded-full object-cover shadow-glow"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <span className="text-2xl font-bold text-primary">
               Mavon
             </span>
           </div>
