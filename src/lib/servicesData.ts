@@ -177,13 +177,13 @@ export const servicesData = {
       title: 'Brochures-Demo',
       examples: [
         {
-          title: 'Corporate Brochure',
+          title: 'Novatech Concert Night- Corporate Brochure',
           description: 'Professional multi-page brochure with flipbook preview.',
           image: brochureFlipbook,
-          demoUrl: 'REPLACE_WITH_URL_BROCHURE',
+          demoUrl: 'https://www.instagram.com/p/DQRHqdvDCQo/?igsh=MXJwYXUyazc4amdwNQ==',
         },
         {
-          title: 'Product Catalog',
+          title: 'Ecovia Living-Product Catalog',
           description: 'Ecovia Living- Interactive product showcase with specifications.',
           image: ecoviabrochure,
           demoUrl: 'https://www.instagram.com/p/DQFB-FeDHo7/?igsh=emQ3MXVpMXVsY2V1',
