@@ -1,5 +1,7 @@
 // Services data structure with placeholder URLs for developer to replace
 // Instructions: Replace all "REPLACE_WITH_URL_*" strings with actual project URLs
+import quickmedproduct from '@/assets/examples/quickmedproduct.jpg';
+import pongalpost from '@/assets/examples/pongalpost.jpg';
 import dhanteras from '@/assets/examples/dhanteras.jpg';
 import holi from '@/assets/examples/holi.jpg';
 import ecoviabrochure from '@/assets/examples/ecoviabrochure.jpg';
