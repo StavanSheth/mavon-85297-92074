@@ -141,15 +141,15 @@ export const servicesData = {
       title: 'Business Posts-Demo',
       examples: [
         {
-          title: 'Festival Greeting Post',
+          title: 'Pongal Festival Greeting Post',
           description: 'Green-Edge Organics Pongal Festival Post Eye catching promotional post.',
-          image: businessOffer,
+          image: pongalpost,
           demoUrl: 'https://www.instagram.com/reel/DQFCXGSDLFy/?igsh=MTNneHpndzVwOGVudg==',
         },
         {
-          title: 'Product Launch Post',
+          title: 'Quickmed- Product Launch Post',
           description: 'QuickMed-Professional product announcement design.',
-          image: businessOffer,
+          image: quickmedproduct,
           demoUrl: 'https://www.instagram.com/reel/DQFCkfJDBDS/?igsh=MWhjeG01cnNrZ2VmMg==',
         },
       ],
