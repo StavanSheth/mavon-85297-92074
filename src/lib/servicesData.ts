@@ -179,7 +179,7 @@ export const servicesData = {
         {
           title: 'Novatech Concert Night- Corporate Brochure',
           description: 'Professional multi-page brochure with flipbook preview.',
-          image: brochureFlipbook,
+          image: novatechbrochure,
           demoUrl: 'https://www.instagram.com/p/DQRHqdvDCQo/?igsh=MXJwYXUyazc4amdwNQ==',
         },
         {
