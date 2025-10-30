@@ -42,7 +42,7 @@ export const servicesData = {
           title: 'Retail POS System',
           description: 'Point of sale system with inventory and real-time billing.',
           image: retailPos,
-          demoUrl: 'https://strange-plum-fwsaqii4am.edgeone.app/',
+          demoUrl: 'https://excessive-orange-ic9jdzxemw.edgeone.app/',
         },
       ],
     },
