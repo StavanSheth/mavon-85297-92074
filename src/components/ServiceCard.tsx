@@ -185,10 +185,16 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             {example.description}
           </p>
           
-          {/* Call to Action with pulsing animation */}
-          <div className="flex items-center gap-2 text-sm font-medium">
-            <Sparkles className={`${colors.text} ${!liteMode ? 'animate-pulse' : ''}`} size={16} />
-            <span className={`${colors.glow} ${!liteMode ? 'animate-pulse-text' : ''}`}>
+          {/* Call to Action with eye-catching pop animation */}
+          <div className={`
+            flex items-center gap-2 text-sm font-medium
+            ${!liteMode ? 'animate-pop-intense' : ''}
+          `}>
+            <Sparkles 
+              className={`${colors.text} ${!liteMode ? 'animate-pop-bounce' : ''}`} 
+              size={16} 
+            />
+            <span className={`${colors.glow} font-semibold`}>
               Click me to try
             </span>
           </div>
