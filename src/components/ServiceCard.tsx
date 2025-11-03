@@ -187,7 +187,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           
           {/* Call to Action with eye-catching pop animation */}
           <div className={`
-            flex items-center gap-2 text-sm font-medium
+            // flex items-center gap-2 text-sm font-medium
             ${!liteMode ? 'animate-pop-intense' : ''}
           `}> 
             <Sparkles 
