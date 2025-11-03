@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Monitor, Smartphone, Database, Cog, Palette, PenTool, ChevronDown, TrendingUp } from 'lucide-react';
+import { useState } from 'react';
+import { Monitor, Smartphone, Database, Cog, Palette, PenTool } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import ScrollReveal from './ScrollReveal';
@@ -9,97 +9,88 @@ interface ServicesProps {
   liteMode: boolean;
 }
 
-type ServiceColor = 'software' | 'digital' | 'branding' | 'marketing';
+type ServiceColor = 'software' | 'digital' | 'branding' | 'marketing' | 'digital2' | 'branding2' | 'marketing2';
+
+interface ServiceExample {
+  title: string;
+  description: string;
+  image: string;
+  demoUrl: string;
+}
 
 const Services = ({ liteMode }: ServicesProps) => {
-  const [expandedService, setExpandedService] = useState<string | null>(null);
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeFilter, setActiveFilter] = useState<string>('all');
 
   const serviceCategories = [
     {
       id: 'software-web-retail',
-      title: 'Software– Web & Retail',
+      title: 'Web & Retail',
+      shortTitle: 'Web',
       icon: Monitor,
       color: 'marketing' as ServiceColor,
-      description: 'Enterprise-grade web applications and retail systems',
       subcategories: servicesData.softwareWebRetail,
     },
     {
       id: 'software-mobile-ai',
-      title: 'Software– Mobile & AI',
+      title: 'Mobile & AI',
+      shortTitle: 'Mobile',
       icon: Smartphone,
       color: 'digital' as ServiceColor,
-      description: 'Smart mobile apps and intelligent chatbot solutions',
       subcategories: servicesData.softwareMobileAI,
     },
     {
       id: 'software-dbms',
-      title: 'Database Management',
+      title: 'Database',
+      shortTitle: 'DBMS',
       icon: Database,
       color: 'branding' as ServiceColor,
-      description: 'Robust database systems for data management',
       subcategories: servicesData.softwareDBMS,
     },
     {
       id: 'software-automation',
-      title: 'Automation Tools',
+      title: 'Automation',
+      shortTitle: 'Auto',
       icon: Cog,
       color: 'marketing2' as ServiceColor,
-      description: 'Streamline workflows with intelligent automation',
       subcategories: servicesData.softwareAutomation,
     },
     {
       id: 'digital',
-      title: 'Digital Products',
+      title: 'Digital Posts',
+      shortTitle: 'Digital',
       icon: Palette,
       color: 'digital2' as ServiceColor,
-      description: 'Stunning designs that capture attention',
       subcategories: servicesData.digital,
     },
     {
       id: 'branding',
-      title: 'Branding & Design',
+      title: 'Branding',
+      shortTitle: 'Brand',
       icon: PenTool,
       color: 'branding2' as ServiceColor,
-      description: 'Brand identity that stands out',
       subcategories: servicesData.branding,
     },
-    // {
-    //   id: 'marketing',
-    //   title: 'Marketing Automation',
-    //   icon: TrendingUp,
-    //   color: 'marketing' as ServiceColor,
-    //   description: 'Automated campaigns that convert',
-    //   subcategories: servicesData.marketing,
-    // },
   ];
 
-  // Ambient glow loop - random card pulses every 6 seconds
-  useEffect(() => {
-    if (liteMode) return;
-    
-    const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * serviceCategories.length);
-      const randomId = serviceCategories[randomIndex].id;
-      setHoveredCard(randomId);
-      setTimeout(() => setHoveredCard(null), 1500);
-    }, 6000);
+  // Flatten all examples with category info
+  const allExamples = serviceCategories.flatMap(category => 
+    Object.entries(category.subcategories).flatMap(([_, subData]: [string, any]) =>
+      subData.examples.map((example: ServiceExample) => ({
+        ...example,
+        categoryId: category.id,
+        categoryTitle: category.title,
+        categoryShortTitle: category.shortTitle,
+        categoryColor: category.color,
+        categoryIcon: category.icon,
+      }))
+    )
+  );
 
-    return () => clearInterval(interval);
-  }, [liteMode]);
+  // Filter examples
+  const filteredExamples = activeFilter === 'all' 
+    ? allExamples 
+    : allExamples.filter(ex => ex.categoryId === activeFilter);
 
-  const handleCardClick = (categoryId: string) => {
-    setExpandedService(expandedService === categoryId ? null : categoryId);
-    
-    // Smooth scroll to expanded section
-    setTimeout(() => {
-      const element = document.getElementById(`service-${categoryId}`);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, 100);
-  };
 
   const getColorClasses = (color: ServiceColor) => {
     const colorMap = {
@@ -164,7 +155,7 @@ const Services = ({ liteMode }: ServicesProps) => {
   };
 
   return (
-    <section ref={sectionRef} className="relative py-24 overflow-hidden">
+    <section className="relative py-16 md:py-24 overflow-hidden">
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-forest-deep/50 to-background" />
       
@@ -189,9 +180,9 @@ const Services = ({ liteMode }: ServicesProps) => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <ScrollReveal disabled={liteMode}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-holographic mb-4"
+              className="text-3xl md:text-5xl font-bold text-holographic mb-4"
               animate={!liteMode ? {
                 textShadow: [
                   '0 0 20px rgba(102, 187, 106, 0.5)',
@@ -203,129 +194,109 @@ const Services = ({ liteMode }: ServicesProps) => {
             >
               Our Services
             </motion.h2>
+            <p className="text-muted-foreground text-sm md:text-base">Explore our portfolio of creative work</p>
           </div>
         </ScrollReveal>
 
-        {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-16">
-          {serviceCategories.map((category, index) => {
-            const Icon = category.icon;
-            const isExpanded = expandedService === category.id;
-            const isHovered = hoveredCard === category.id;
-            const colors = getColorClasses(category.color);
-
-            return (
-              <ScrollReveal 
-                key={category.id}
-                delay={index * 0.1}
-                disabled={liteMode}
-              >
+        {/* Category Filter Pills */}
+        <ScrollReveal disabled={liteMode}>
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-center mb-8 md:mb-12">
+            <motion.button
+              whileHover={!liteMode ? { scale: 1.05 } : {}}
+              whileTap={!liteMode ? { scale: 0.95 } : {}}
+              onClick={() => setActiveFilter('all')}
+              className={`
+                px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all
+                ${activeFilter === 'all' 
+                  ? 'bg-gradient-to-r from-service-marketing to-service-marketing-glow text-white shadow-lg' 
+                  : 'glass-card border border-border/50 hover:border-service-marketing/50'
+                }
+              `}
+            >
+              All Projects
+            </motion.button>
+            {serviceCategories.map((category) => {
+              const Icon = category.icon;
+              const colors = getColorClasses(category.color);
+              const isActive = activeFilter === category.id;
+              
+              return (
                 <motion.button
-                  whileHover={!liteMode ? { scale: 1.02, y: -4 } : {}}
-                  whileTap={!liteMode ? { scale: 0.98 } : {}}
-                  onClick={() => handleCardClick(category.id)}
-                  onMouseEnter={() => setHoveredCard(category.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  key={category.id}
+                  whileHover={!liteMode ? { scale: 1.05 } : {}}
+                  whileTap={!liteMode ? { scale: 0.95 } : {}}
+                  onClick={() => setActiveFilter(category.id)}
                   className={`
-                    group relative w-full glass-card rounded-2xl p-8 text-left
-                    transition-all duration-400 border-2
-                    ${colors.border} ${colors.hover}
-                    ${isExpanded ? 'ring-2 ring-current ' + colors.text : ''}
-                    ${isHovered && !liteMode ? 'animate-tilt-hover' : ''}
+                    px-3 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all
+                    flex items-center gap-1.5 md:gap-2
+                    ${isActive 
+                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg` 
+                      : `glass-card border ${colors.border} hover:${colors.border.replace('/30', '/50')}`
+                    }
                   `}
                 >
-                  {/* Glow effect */}
-                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 ${colors.bg} blur-xl`} />
-                  
-                  {/* Icon Container */}
-                  <div className="relative flex items-start justify-between mb-4">
-                    <div className={`w-16 h-16 rounded-xl ${colors.bg} flex items-center justify-center ${!liteMode ? 'group-hover:animate-icon-morph' : ''}`}>
-                      <Icon className={colors.text} size={32} strokeWidth={2} />
-                    </div>
-                    <ChevronDown
-                      className={`${colors.text} transition-transform duration-300 ${
-                        isExpanded ? 'rotate-180' : ''
-                      }`}
-                      size={24}
-                    />
+                  <Icon size={14} className="hidden md:block" />
+                  <Icon size={12} className="md:hidden" />
+                  <span className="hidden sm:inline">{category.title}</span>
+                  <span className="sm:hidden">{category.shortTitle}</span>
+                </motion.button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        {/* Masonry Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+          {filteredExamples.map((example, index) => {
+            const colors = getColorClasses(example.categoryColor);
+            const CategoryIcon = example.categoryIcon;
+            
+            return (
+              <ScrollReveal 
+                key={`${example.categoryId}-${index}`}
+                delay={index * 0.05}
+                disabled={liteMode}
+              >
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="group relative"
+                >
+                  {/* Category Badge */}
+                  <div className={`
+                    absolute -top-2 -right-2 z-10 
+                    px-2 md:px-3 py-1 rounded-full text-[10px] md:text-xs font-semibold
+                    flex items-center gap-1 md:gap-1.5
+                    bg-gradient-to-r ${colors.gradient} text-white
+                    shadow-lg backdrop-blur-sm
+                  `}>
+                    <CategoryIcon size={10} className="md:hidden" />
+                    <CategoryIcon size={12} className="hidden md:block" />
+                    <span className="hidden sm:inline">{example.categoryTitle}</span>
+                    <span className="sm:hidden">{example.categoryShortTitle}</span>
                   </div>
 
-                  {/* Title with gradient */}
-                  <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>
-                    {category.title}
-                  </h3>
-                  <p className="text-muted-foreground">{category.description}</p>
-
-                  {/* Hover particle burst */}
-                  {!liteMode && isHovered && (
-                    <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
-                      {[...Array(8)].map((_, i) => (
-                        <div
-                          key={i}
-                          className={`absolute w-1.5 h-1.5 ${colors.bg} rounded-full animate-particle-float`}
-                          style={{
-                            left: '50%',
-                            top: '50%',
-                            transform: `rotate(${i * 45}deg) translateX(40px)`,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </motion.button>
+                  {/* Service Card */}
+                  <ServiceCard
+                    example={example}
+                    color={example.categoryColor}
+                    liteMode={liteMode}
+                  />
+                </motion.div>
               </ScrollReveal>
             );
           })}
         </div>
 
-        {/* Expanded Subsections */}
-        {serviceCategories.map((category) => {
-          const isExpanded = expandedService === category.id;
-          const colors = getColorClasses(category.color);
-
-          return (
-            isExpanded && (
-              <div
-                key={`${category.id}-expanded`}
-                id={`service-${category.id}`}
-                className="animate-leaf-bloom mb-16 scroll-mt-24"
-              >
-                <div className={`glass-card rounded-3xl p-8 border-2 ${colors.border}`}>
-                  {Object.entries(category.subcategories).map(([subKey, subData], subIndex) => (
-                    <div 
-                      key={subKey} 
-                      className="mb-12 last:mb-0 animate-fade-in"
-                      style={{ animationDelay: `${subIndex * 0.1}s` }}
-                    >
-                      {/* Subsection Title */}
-                      <h4 className={`text-2xl font-semibold mb-6 flex items-center gap-3 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`}>
-                        <div className={`w-2 h-2 rounded-full ${colors.bg} ${!liteMode ? 'animate-pulse' : ''}`} />
-                        {subData.title}
-                      </h4>
-
-                      {/* Example Cards Grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {subData.examples.map((example, exIndex) => (
-                          <div
-                            key={exIndex}
-                            className="animate-fade-in-up"
-                            style={{ animationDelay: `${(subIndex * 0.1) + (exIndex * 0.15)}s` }}
-                          >
-                            <ServiceCard
-                              example={example}
-                              color={category.color}
-                              liteMode={liteMode}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )
-          );
-        })}
+        {/* Empty State */}
+        {filteredExamples.length === 0 && (
+          <div className="text-center py-12 md:py-20">
+            <p className="text-muted-foreground text-sm md:text-base">No projects found in this category</p>
+          </div>
+        )}
       </div>
     </section>
   );
