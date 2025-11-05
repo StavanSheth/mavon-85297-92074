@@ -190,5 +190,4 @@ export const servicesData = {
       ],
     },
   },
-  },
 };
