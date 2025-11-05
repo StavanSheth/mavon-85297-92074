@@ -7,7 +7,7 @@ import dhanteras from '@/assets/examples/dhanteras.jpg';
 import holi from '@/assets/examples/holi.jpg';
 import ecoviabrochure from '@/assets/examples/ecoviabrochure.jpg';
 import toyversemascot from '@/assets/examples/toyversemascot.jpg';
-import catalystlogo from '@/assets/examples/catalystlogo.jpg';
+import studiologo from '@/assets/examples/studiologo.jpg';
 import smartschoolErp from '@/assets/examples/smartschool-erp.jpg';
 import retailPos from '@/assets/examples/retail-pos.jpg';
 import foodDelivery from '@/assets/examples/food-delivery.jpg';
@@ -165,7 +165,7 @@ export const servicesData = {
         {
           title: '3D Lettermark Logo',
           description: 'Modern 3D logo with depth and professional appeal.',
-          image: catalystlogo,
+          image: studiologo,
           demoUrl: 'https://www.instagram.com/p/DQrux-MDNu9/?igsh=MTMyd2FvZjJpNWt2dA==',
         },
         {
