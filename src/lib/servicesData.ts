@@ -194,40 +194,5 @@ export const servicesData = {
       ],
     },
   },
-  marketing: {
-    socialMedia: {
-      title: 'Social Media Management-Demo',
-      examples: [
-        {
-          title: 'Instagram Ad Campaign',
-          description: 'Targeted Instagram advertising with A/B testing.',
-          image: instagramAd,
-          demoUrl: 'REPLACE_WITH_URL_INSTAGRAM',
-        },
-        {
-          title: 'Social Media Calendar',
-          description: 'Monthly content calendar with scheduled posts.',
-          image: instagramAd,
-          demoUrl: 'REPLACE_WITH_URL_CALENDAR',
-        },
-      ],
-    },
-    emailCampaigns: {
-      title: 'Email Campaigns-Demo',
-      examples: [
-        {
-          title: 'Welcome Email Series',
-          description: 'Automated welcome sequence for new subscribers.',
-          image: emailNewsletter,
-          demoUrl: 'REPLACE_WITH_URL_WELCOME',
-        },
-        {
-          title: 'Newsletter Template',
-          description: 'Responsive newsletter design with dynamic content.',
-          image: emailNewsletter,
-          demoUrl: 'REPLACE_WITH_URL_NEWSLETTER',
-        },
-      ],
-    },
   },
 };
