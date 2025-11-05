@@ -18,14 +18,10 @@ import inventoryMgmt from '@/assets/examples/inventory-mgmt.jpg';
 import studentRecords from '@/assets/examples/student-records.jpg';
 import invoiceGenerator from '@/assets/examples/invoice-generator.jpg';
 import emailScheduler from '@/assets/examples/email-scheduler.jpg';
-import marketingAnalytics from '@/assets/examples/marketing-analytics.jpg';
 import salesTracker from '@/assets/examples/sales-tracker.jpg';
 import festivalDiwali from '@/assets/examples/festival-diwali.jpg';
 import businessOffer from '@/assets/examples/business-offer.jpg';
-import logo3d from '@/assets/examples/logo-3d.jpg';
 import brochureFlipbook from '@/assets/examples/brochure-flipbook.jpg';
-import instagramAd from '@/assets/examples/instagram-ad.jpg';
-import emailNewsletter from '@/assets/examples/email-newsletter.jpg';
 
 export const servicesData = {
   softwareWebRetail: {
