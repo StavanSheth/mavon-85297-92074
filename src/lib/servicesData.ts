@@ -166,7 +166,7 @@ export const servicesData = {
           title: '3D Lettermark Logo',
           description: 'Modern 3D logo with depth and professional appeal.',
           image: logo3d,
-          demoUrl: 'REPLACE_WITH_URL_LOGO3D',
+          demoUrl: 'https://www.instagram.com/p/DQrux-MDNu9/?igsh=MTMyd2FvZjJpNWt2dA==',
         },
         {
           title: 'Mascot Logo',
