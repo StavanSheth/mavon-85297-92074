@@ -8,24 +8,17 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* 🌲 Neon Forest Brand - Mavon Cinematic Design System */
+    /* 🌲 Forest Theme - Mavon Design System (Balanced + More Image Visibility) */
 
-    /* Base Colors - Deep Black-Green Atmosphere */
-    --background: 150 100% 3%;          /* #0A0F0A - Deep dark base */
-    --foreground: 150 100% 98%;         /* Ultra bright white-green text */
+    /* Base Colors */
+    --background: 120 30% 10%;         /* darker base to make bright image pop more // changed */
+    --foreground: 127 50% 97%;         /* slightly brighter text // changed */
 
-    /* Neon Forest Palette */
-    --forest-deep: 160 100% 11%;        /* #003B29 - Deep green atmosphere */
-    --forest-canopy: 160 80% 15%;       /* Canopy depth */
-    --neon-forest: 150 100% 50%;        /* #00FF88 - Primary neon green */
-    --neon-forest-glow: 150 100% 60%;   /* Brighter glow variant */
-    --leaf-green: 150 100% 50%;         /* #00FF88 - Same as neon */
-    --leaf-light: 150 100% 70%;         /* Light neon accent */
-    
-    /* Gold Accents */
-    --gold: 45 100% 50%;                /* Pure gold */
-    --gold-glow: 45 100% 60%;           /* Gold highlight */
-    
+    /* Forest Palette */
+    --forest-deep: 120 35% 15%;        /* reduced darkness // changed */
+    --forest-canopy: 120 30% 22%;
+    --leaf-green: 127 45% 52%;
+    --leaf-light: 127 50% 68%;         /* more highlight for accents // changed */
     --earth-brown: 20 25% 28%;
     --mist: 0 0% 98%;
 
@@ -54,19 +47,19 @@ All colors MUST be HSL.
     --popover: 120 55% 12%;
     --popover-foreground: 127 53% 95%;
     
-    --primary: 150 100% 50%;            /* #00FF88 - Neon forest */
-    --primary-foreground: 150 100% 5%;
-    --primary-glow: 150 100% 60%;       /* Intense neon glow */
+    --primary: 127 53% 51%;
+    --primary-foreground: 120 70% 8%;
+    --primary-glow: 127 53% 68%;       /* stronger glow for contrast // changed */
     
-    --secondary: 45 100% 50%;           /* Gold secondary */
-    --secondary-foreground: 150 100% 5%;
-    --secondary-glow: 45 100% 65%;
+    --secondary: 178 85% 38%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 178 85% 55%;
     
-    --muted: 160 50% 20%;
-    --muted-foreground: 150 30% 70%;
+    --muted: 120 30% 25%;
+    --muted-foreground: 127 25% 75%;   /* slightly lighter muted text // changed */
     
-    --accent: 45 100% 55%;              /* Gold accent */
-    --accent-foreground: 150 100% 5%;
+    --accent: 45 100% 70%;
+    --accent-foreground: 120 70% 13%;
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
@@ -75,26 +68,25 @@ All colors MUST be HSL.
     --input: 120 30% 20%;
     --ring: 127 53% 51%;
     
-    /* Gradients - Cinematic Neon Forest */
-    --gradient-forest: linear-gradient(180deg, hsl(150, 100%, 3% / 0.95) 0%, hsl(160, 100%, 11% / 0.7) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(150, 100%, 50%) 0%, hsl(45, 100%, 50%) 100%);
-    --gradient-glow: radial-gradient(circle, hsl(150, 100%, 50% / 0.2) 0%, transparent 70%);
-    --gradient-holographic: linear-gradient(135deg, hsl(150, 100%, 50%) 0%, hsl(170, 100%, 45%) 25%, hsl(180, 100%, 50%) 50%, hsl(45, 100%, 50%) 75%, hsl(150, 100%, 60%) 100%);
+    /* Gradients (made overlays lighter to reveal more image) */
+    --gradient-forest: linear-gradient(180deg, hsl(120, 70%, 8% / 0.7) 0%, hsl(120, 45%, 18% / 0.5) 100%); /* changed */
+    --gradient-leaf: linear-gradient(135deg, hsl(127, 53%, 51%) 0%, hsl(178, 85%, 38%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(127, 53%, 51% / 0.15) 0%, transparent 70%); /* more transparent */
+    --gradient-holographic: linear-gradient(135deg, hsl(127, 53%, 51%) 0%, hsl(178, 85%, 38%) 25%, hsl(256, 92%, 76%) 50%, hsl(201, 100%, 74%) 75%, hsl(45, 100%, 70%) 100%);
     
     /* Section Background */
     --gradient-services-bg: linear-gradient(160deg, hsl(127, 45%, 96%) 0%, hsl(145, 55%, 92%) 100%);
     
-    /* Glass Effect - Ultra Premium */
-    --glass-bg: hsl(160, 100%, 11% / 0.3);
-    --glass-border: hsl(150, 100%, 50% / 0.2);
-    --glass-glow: hsl(150, 100%, 50% / 0.15);
+    /* Glass Effect */
+    --glass-bg: hsl(120, 45%, 15% / 0.45);  /* lighter opacity to let image show through // changed */
+    --glass-border: hsl(127, 53%, 51% / 0.25);
+    --glass-glow: hsl(127, 53%, 51% / 0.12);
     
-    /* Shadows - Neon Glow System */
-    --shadow-soft: 0 4px 20px hsl(150, 100%, 3% / 0.5);
-    --shadow-glow: 0 0 40px hsl(150, 100%, 50% / 0.3);
-    --shadow-glow-strong: 0 0 60px hsl(150, 100%, 50% / 0.5), 0 0 100px hsl(150, 100%, 50% / 0.2);
-    --shadow-card: 0 8px 32px hsl(150, 100%, 3% / 0.6);
-    --shadow-gold: 0 0 30px hsl(45, 100%, 50% / 0.4);
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(120, 70%, 13% / 0.35);
+    --shadow-glow: 0 0 40px hsl(127, 53%, 51% / 0.25);
+    --shadow-glow-strong: 0 0 60px hsl(127, 53%, 51% / 0.4);
+    --shadow-card: 0 8px 32px hsl(120, 70%, 8% / 0.5);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -134,20 +126,11 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Glass Morphism - Premium Blur */
   .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-card);
-  }
-
-  /* Neon Text Effects */
-  .text-neon {
-    color: hsl(var(--neon-forest));
-    text-shadow: 0 0 10px hsl(var(--neon-forest-glow) / 0.5),
-                 0 0 20px hsl(var(--neon-forest-glow) / 0.3);
   }
 
   .text-holographic {
@@ -159,7 +142,6 @@ All colors MUST be HSL.
     animation: holographic-shift 3s ease-in-out infinite;
   }
 
-  /* Glow Effects */
   .glow {
     box-shadow: var(--shadow-glow);
   }
@@ -168,11 +150,6 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-glow-strong);
   }
 
-  .glow-gold {
-    box-shadow: var(--shadow-gold);
-  }
-
-  /* 3D Tilt Interactions */
   .hover-tilt {
     transition: var(--transition-smooth);
     transform-style: preserve-3d;
@@ -183,50 +160,8 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-glow-strong);
   }
 
-  /* Magnetic Button Effect Base */
-  .magnetic {
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-  }
-
-  /* Neon Border Pulse */
-  .border-neon-pulse {
-    border: 1px solid hsl(var(--neon-forest));
-    animation: border-neon-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes border-neon-pulse {
-    0%, 100% { 
-      border-color: hsl(var(--neon-forest));
-      box-shadow: 0 0 5px hsl(var(--neon-forest) / 0.3);
-    }
-    50% { 
-      border-color: hsl(var(--neon-forest-glow));
-      box-shadow: 0 0 20px hsl(var(--neon-forest-glow) / 0.6);
-    }
-  }
-
-  /* Typing Indicator Animation */
-  .typing-text {
-    overflow: hidden;
-    border-right: 2px solid hsl(var(--neon-forest));
-    white-space: nowrap;
-    animation: typing 2s steps(22) 1s forwards, blink-caret 0.75s step-end infinite;
-  }
-
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: hsl(var(--neon-forest)); }
-  }
-
-  /* Cursor System */
-  .cursor-hidden {
-    cursor: none;
+  .cursor-firefly {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="%233AC34F" opacity="0.6"/><circle cx="12" cy="12" r="3" fill="%23FFD966"/></svg>') 12 12, auto;
   }
 }
 

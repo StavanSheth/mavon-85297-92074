@@ -1,72 +1,68 @@
-import { Sprout, Zap, Users, Award } from 'lucide-react';
+import { Target, Users, Leaf, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ScrollSection } from './ScrollSection';
-import { WhisperText } from './WhisperText';
-import { GlowCard } from './GlowCard';
+import ScrollReveal from './ScrollReveal';
 
 interface AboutProps {
   liteMode: boolean;
 }
 
 const About = ({ liteMode }: AboutProps) => {
-  const milestones = [
+  const values = [
     {
-      icon: Sprout,
-      year: '2024',
-      title: 'Seeds of Innovation',
-      color: 'hsl(var(--leaf-light))',
-      description: 'Mavon was planted with a vision to merge technology and sustainability, creating digital solutions that grow naturally with business needs.',
-    },
-    {
-      icon: Zap,
-      year: 'Present',
-      title: 'Rapid Growth',
-      color: 'hsl(var(--neon-forest))',
-      description: 'Our forest of innovation thrives with diverse projects spanning AI, web development, and digital transformation across multiple industries.',
+      icon: Target,
+      title: 'Our Mission',
+      color: 'text-service-marketing',
+      bgColor: 'bg-service-marketing/20',
+      borderColor: 'border-service-marketing/30',
+      description: 'To deliver innovative technology solutions that empower businesses.'
     },
     {
       icon: Users,
-      year: 'Today',
-      title: 'Community Ecosystem',
-      color: 'hsl(var(--gold))',
-      description: 'Building a network of forward-thinking partners and clients who believe in conscious technology that creates lasting impact.',
+      title: 'Innovative Solutions',
+      color: 'text-service-digital',
+      bgColor: 'bg-service-digital/20',
+      borderColor: 'border-service-digital/30',
+      description: 'Driven by Technology & Vision.'
+    },
+    {
+      icon: Leaf,
+      title: 'Sustainability',
+      color: 'text-service-branding',
+      bgColor: 'bg-service-branding/20',
+      borderColor: 'border-service-branding/30',
+      description: 'Building conscious solutions that grow with nature and contribute to better future.'
     },
     {
       icon: Award,
-      year: 'Future',
-      title: 'Endless Horizons',
-      color: 'hsl(var(--primary))',
-      description: 'Continuing to pioneer sustainable tech solutions that push boundaries while staying rooted in our core values of excellence and innovation.',
-    },
+      title: 'Excellence Focused',
+      color: 'text-primary',
+      bgColor: 'bg-primary/20',
+      borderColor: 'border-primary/30',
+      description: 'Building the Future'
+    }
   ];
 
   return (
     <div className="container mx-auto px-4 relative">
-      {/* Bioluminescent text highlights floating */}
+      {/* Floating keywords animation */}
       {!liteMode && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {['Growth', 'Innovation', 'Partnership', 'Excellence'].map((word, i) => (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-10">
+          {['Innovation', 'Sustainable', 'Technology', 'Future'].map((word, i) => (
             <motion.div
               key={word}
-              className="absolute text-3xl font-bold"
+              className="absolute text-2xl font-bold text-primary"
               style={{
-                left: `${15 + i * 22}%`,
-                top: `${25 + (i % 2) * 40}%`,
-                background: `linear-gradient(135deg, hsl(var(--neon-forest)), hsl(var(--gold)))`,
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                opacity: 0.08,
+                left: `${20 + i * 20}%`,
+                top: `${30 + i * 10}%`,
               }}
               animate={{
-                y: [0, -25, 0],
-                opacity: [0.05, 0.12, 0.05],
+                y: [0, -20, 0],
+                opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
-                duration: 5,
-                delay: i * 0.6,
+                duration: 4,
+                delay: i * 0.5,
                 repeat: Infinity,
-                ease: 'easeInOut',
               }}
             >
               {word}
@@ -75,176 +71,100 @@ const About = ({ liteMode }: AboutProps) => {
         </div>
       )}
 
-      <ScrollSection disabled={liteMode} parallaxSpeed={0.2}>
+      <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
-          <WhisperText delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-forest via-gold to-primary bg-clip-text text-transparent">
-              Our Story
-            </h2>
-          </WhisperText>
-          <WhisperText delay={0.3}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A journey through the forest of innovation, where technology meets nature's wisdom
-            </p>
-          </WhisperText>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            About Us
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Pioneering the future of technology solutions
+          </p>
         </div>
-      </ScrollSection>
+      </ScrollReveal>
 
-      <ScrollSection disabled={liteMode} delay={0.2}>
-        <GlowCard className="max-w-4xl mx-auto mb-20" glowColor="hsl(var(--neon-forest))">
-          <div className="p-8 md:p-12">
+      <ScrollReveal disabled={liteMode} delay={0.2}>
+        <div className="max-w-4xl mx-auto mb-16">
+          <motion.div 
+            className="glass-card p-8 rounded-2xl border-2 border-primary/20"
+            whileHover={!liteMode ? { scale: 1.01, boxShadow: '0 0 40px rgba(102, 187, 106, 0.3)' } : {}}
+          >
             <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-              At <motion.span
-                className="font-bold text-neon-forest"
-                animate={!liteMode ? {
-                  textShadow: [
-                    '0 0 10px hsl(var(--neon-forest) / 0.5)',
-                    '0 0 20px hsl(var(--neon-forest) / 0.8)',
-                    '0 0 10px hsl(var(--neon-forest) / 0.5)',
-                  ],
-                } : {}}
-                transition={{ duration: 3, repeat: Infinity }}
-              >Mavon</motion.span>, we believe in the power of technology to transform businesses. 
+              At Mavon, we believe in the power of technology to transform businesses. 
               Our team combines cutting-edge development practices with sustainable approaches to create solutions 
               that not only meet your needs today but also contribute to a better tomorrow.
             </p>
-            <p className="text-lg text-foreground/90 leading-relaxed">
+            <motion.p 
+              className="text-lg text-foreground/90 leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               From custom software development to digital marketing strategies, we're your partner in digital transformation. 
-              We take pride in delivering exceptional results that drive growth and{' '}
-              <motion.span
-                className="font-semibold text-gold"
-                animate={!liteMode ? {
+              We take pride in delivering exceptional results that drive growth and <motion.span
+                className="text-primary font-semibold"
+                animate={!liteMode ? { 
                   textShadow: [
-                    '0 0 10px hsl(var(--gold) / 0.5)',
-                    '0 0 20px hsl(var(--gold) / 0.8)',
-                    '0 0 10px hsl(var(--gold) / 0.5)',
+                    '0 0 10px rgba(102, 187, 106, 0.5)',
+                    '0 0 20px rgba(102, 187, 106, 0.8)',
+                    '0 0 10px rgba(102, 187, 106, 0.5)',
                   ],
                 } : {}}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-              >lasting impact</motion.span>.
-            </p>
-          </div>
-        </GlowCard>
-      </ScrollSection>
+                transition={{ duration: 2, repeat: Infinity }}
+              >innovation</motion.span>.
+            </motion.p>
+          </motion.div>
+        </div>
+      </ScrollReveal>
 
-      {/* Timeline-narrative with leaf markers */}
-      <div className="max-w-5xl mx-auto relative">
-        {/* Central timeline stem */}
-        {!liteMode && (
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-neon-forest/30 via-gold/40 to-primary/30 -translate-x-1/2 hidden md:block" />
-        )}
-
-        <div className="space-y-16">
-          {milestones.map((milestone, index) => {
-            const Icon = milestone.icon;
-            const isEven = index % 2 === 0;
-            
-            return (
-              <ScrollSection
-                key={index}
-                delay={index * 0.15}
-                disabled={liteMode}
-                fadeDirection={isEven ? 'right' : 'left'}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {values.map((value, index) => {
+          const Icon = value.icon;
+          return (
+            <ScrollReveal 
+              key={index}
+              delay={index * 0.15}
+              disabled={liteMode}
+            >
+              <motion.div
+                className={`glass-card p-6 rounded-xl border-2 transition-all duration-300 group ${value.borderColor}`}
+                whileHover={!liteMode ? { 
+                  scale: 1.03, 
+                  y: -6,
+                  boxShadow: '0 20px 40px rgba(102, 187, 106, 0.2)',
+                } : {}}
               >
-                <div className={`flex flex-col md:flex-row gap-8 items-center ${isEven ? '' : 'md:flex-row-reverse'}`}>
-                  {/* Content side */}
-                  <div className="flex-1">
-                    <GlowCard glowColor={milestone.color} tiltIntensity={4}>
-                      <div className="p-6">
-                        {/* Year badge */}
-                        <motion.div
-                          className="inline-block px-4 py-1.5 rounded-full mb-4 text-sm font-bold"
-                          style={{
-                            backgroundColor: `${milestone.color}20`,
-                            color: milestone.color,
-                            border: `2px solid ${milestone.color}40`,
-                          }}
-                          animate={!liteMode ? {
-                            boxShadow: [
-                              `0 0 10px ${milestone.color}40`,
-                              `0 0 20px ${milestone.color}60`,
-                              `0 0 10px ${milestone.color}40`,
-                            ],
-                          } : {}}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.3,
-                          }}
-                        >
-                          {milestone.year}
-                        </motion.div>
-
-                        <h3
-                          className="text-2xl font-bold mb-3"
-                          style={{ color: milestone.color }}
-                        >
-                          {milestone.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {milestone.description}
-                        </p>
-                      </div>
-                    </GlowCard>
-                  </div>
-
-                  {/* Icon milestone marker */}
-                  <motion.div
-                    className="relative flex-shrink-0"
+                {/* Glow effect */}
+                <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 ${value.bgColor} blur-xl`} />
+                
+                <div className="relative flex items-start gap-4">
+                  <motion.div 
+                    className={`p-3 rounded-lg ${value.bgColor} flex-shrink-0`}
                     animate={!liteMode ? {
+                      rotate: [0, 10, -10, 0],
                       scale: [1, 1.1, 1],
-                      rotate: [0, 5, -5, 0],
                     } : {}}
                     transition={{
                       duration: 4,
-                      delay: index * 0.4,
+                      delay: index * 0.3,
                       repeat: Infinity,
-                      ease: 'easeInOut',
                     }}
                   >
-                    <div
-                      className="w-16 h-16 rounded-full flex items-center justify-center relative"
-                      style={{
-                        backgroundColor: `${milestone.color}20`,
-                        border: `3px solid ${milestone.color}`,
-                        boxShadow: `0 0 30px ${milestone.color}60, inset 0 0 20px ${milestone.color}20`,
-                      }}
-                    >
-                      <Icon
-                        className="w-7 h-7"
-                        style={{ color: milestone.color }}
-                      />
-                    </div>
-                    
-                    {/* Leaf marker glow pulse */}
-                    {!liteMode && (
-                      <motion.div
-                        className="absolute inset-0 rounded-full"
-                        style={{
-                          backgroundColor: milestone.color,
-                          filter: 'blur(15px)',
-                        }}
-                        animate={{
-                          opacity: [0.2, 0.4, 0.2],
-                          scale: [1, 1.2, 1],
-                        }}
-                        transition={{
-                          duration: 2,
-                          delay: index * 0.2,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
-                      />
-                    )}
+                    <Icon className={`w-6 h-6 ${value.color}`} />
                   </motion.div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="flex-1 hidden md:block" />
+                  <div>
+                    <h3 className={`text-xl font-bold mb-2 ${value.color}`}>
+                      {value.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </div>
                 </div>
-              </ScrollSection>
-            );
-          })}
-        </div>
+              </motion.div>
+            </ScrollReveal>
+          );
+        })}
       </div>
     </div>
   );

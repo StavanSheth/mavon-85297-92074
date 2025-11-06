@@ -1,30 +1,20 @@
-import { ChevronDown, Volume2, VolumeX } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { CinematicHero } from '@/components/CinematicHero';
-import Values from '@/components/Values';
+import EnhancedHero from '@/components/EnhancedHero';
 import Services from '@/components/Services';
 import Solutions from '@/components/Solutions';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import FloatingMascot from '@/components/FloatingMascot';
-import { CursorEngine } from '@/components/CursorEngine';
-import { ParallaxForest } from '@/components/ParallaxForest';
-import { NatureParticleField } from '@/components/NatureParticleField';
-import { ForestFog } from '@/components/ForestFog';
+import FireflyCursor from '@/components/FireflyCursor';
+import ParticleSystem from '@/components/ParticleSystem';
+import ParallaxBackground from '@/components/ParallaxBackground';
+import FloatingLeaves from '@/components/FloatingLeaves';
 import { Navigation } from '@/components/Navigation';
 import { useLiteMode } from '@/contexts/LiteModeContext';
-import { useAmbientSound } from '@/hooks/useAmbientSound';
 
 const Index = () => {
   const { liteMode } = useLiteMode();
-  const [soundEnabled, setSoundEnabled] = useState(true);
-
-  // Ambient sound system
-  const { isPlaying, toggle: toggleSound } = useAmbientSound('/sounds/ambient-forest.mp3', {
-    autoPlay: !liteMode && soundEnabled,
-    volume: 0.3,
-  });
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -33,47 +23,25 @@ const Index = () => {
     }
   };
 
-  const handleSoundToggle = () => {
-    toggleSound();
-    setSoundEnabled(!soundEnabled);
-  };
-
   return (
     <div className="min-h-screen bg-background relative">
       {/* Background decorative elements - all at z-0 */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-        {/* Parallax Forest Background */}
-        {!liteMode && <ParallaxForest />}
+        {/* 3D Particle System */}
+        {!liteMode && <ParticleSystem />}
         
-        {/* Nature Particle Field */}
-        {!liteMode && <NatureParticleField />}
+        {/* Parallax Background Layers */}
+        {!liteMode && <ParallaxBackground />}
         
-        {/* Forest Fog */}
-        {!liteMode && <ForestFog />}
+        {/* Floating Leaves */}
+        {!liteMode && <FloatingLeaves />}
       </div>
       
-      {/* Custom Cursor Engine */}
-      {!liteMode && <CursorEngine />}
+      {/* Firefly cursor effect */}
+      {!liteMode && <FireflyCursor />}
 
       {/* Floating Mascot */}
       {!liteMode && <FloatingMascot />}
-
-      {/* Sound Toggle Button */}
-      {!liteMode && (
-        <motion.button
-          onClick={handleSoundToggle}
-          className="fixed top-24 right-8 w-12 h-12 rounded-full glass-card flex items-center justify-center z-50 hover:scale-110 transition-transform"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          aria-label={isPlaying ? 'Mute sound' : 'Unmute sound'}
-        >
-          {isPlaying ? (
-            <Volume2 className="text-neon-forest" size={20} />
-          ) : (
-            <VolumeX className="text-muted-foreground" size={20} />
-          )}
-        </motion.button>
-      )}
 
       {/* Main content - higher z-index */}
       <div className="relative" style={{ zIndex: 10 }}>
@@ -81,26 +49,21 @@ const Index = () => {
         <Navigation />
 
         {/* Hero Section */}
-        <section id="home" className="relative">
-          <CinematicHero onScrollToServices={() => scrollToSection('services')} />
+        <section id="home" className="pt-20 relative">
+          <EnhancedHero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
         </section>
 
-        {/* Values Section - Forest Wisdom */}
-        <section id="values" className="py-20 relative">
-          <Values liteMode={liteMode} />
-        </section>
-
-        {/* Services Section - Innovation Groves */}
+        {/* Services Section */}
         <section id="services" className="py-20 relative">
           <Services liteMode={liteMode} />
         </section>
 
-        {/* Solutions Section - Impact Showcase */}
+        {/* Solutions Section */}
         <section id="solutions" className="py-20 relative">
           <Solutions liteMode={liteMode} />
         </section>
 
-        {/* About Section - Our Story Timeline */}
+        {/* About Section */}
         <section id="about" className="py-20 relative">
           <About liteMode={liteMode} />
         </section>
