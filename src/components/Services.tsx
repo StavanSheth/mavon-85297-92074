@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Monitor, Smartphone, Database, Cog, Palette, PenTool } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
-import ScrollReveal from './ScrollReveal';
+import { ScrollSection } from './ScrollSection';
+import { WhisperText } from './WhisperText';
 import { servicesData } from '@/lib/servicesData';
 
 interface ServicesProps {
@@ -156,21 +157,35 @@ const Services = ({ liteMode }: ServicesProps) => {
 
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-forest-deep/50 to-background" />
+      {/* Background gradient with forest depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
       
-      {/* Floating particle overlay */}
+      {/* Innovation Grove fireflies */}
       {!liteMode && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(12)].map((_, i) => (
-            <div
+          {[...Array(15)].map((_, i) => (
+            <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-leaf-light/40 rounded-full animate-particle-float"
+              className="absolute rounded-full"
               style={{
+                width: i % 3 === 0 ? 3 : 2,
+                height: i % 3 === 0 ? 3 : 2,
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${3 + Math.random() * 2}s`,
+                backgroundColor: i % 2 === 0 ? 'hsl(var(--neon-forest))' : 'hsl(var(--gold))',
+                boxShadow: `0 0 ${i % 3 === 0 ? 16 : 12}px currentColor`,
+              }}
+              animate={{
+                y: [-20, -40, -20],
+                x: [-10, 10, -10],
+                opacity: [0.4, 0.9, 0.4],
+                scale: [0.8, 1.3, 0.8],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 3,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+                ease: 'easeInOut',
               }}
             />
           ))}
@@ -179,41 +194,37 @@ const Services = ({ liteMode }: ServicesProps) => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <ScrollReveal disabled={liteMode}>
+        <ScrollSection disabled={liteMode} parallaxSpeed={0.3}>
           <div className="text-center mb-12 md:mb-16">
-            <motion.h2 
-              className="text-3xl md:text-5xl font-bold text-holographic mb-4"
-              animate={!liteMode ? {
-                textShadow: [
-                  '0 0 20px rgba(102, 187, 106, 0.5)',
-                  '0 0 40px rgba(102, 187, 106, 0.8)',
-                  '0 0 20px rgba(102, 187, 106, 0.5)',
-                ],
-              } : {}}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Our Services
-            </motion.h2>
-            <p className="text-muted-foreground text-sm md:text-base">Explore our portfolio of creative work</p>
+            <WhisperText delay={0.1}>
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-forest via-gold to-primary bg-clip-text text-transparent">
+                Innovation Groves
+              </h2>
+            </WhisperText>
+            <WhisperText delay={0.3}>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+                Explore the diverse ecosystems where ideas bloom into reality
+              </p>
+            </WhisperText>
           </div>
-        </ScrollReveal>
+        </ScrollSection>
 
-        {/* Category Filter Pills */}
-        <ScrollReveal disabled={liteMode}>
+        {/* Forest Path Filter Pills */}
+        <ScrollSection disabled={liteMode} delay={0.2} fadeDirection="none">
           <div className="flex flex-wrap gap-2 md:gap-3 justify-center mb-8 md:mb-12">
             <motion.button
-              whileHover={!liteMode ? { scale: 1.05 } : {}}
+              whileHover={!liteMode ? { scale: 1.05, y: -2 } : {}}
               whileTap={!liteMode ? { scale: 0.95 } : {}}
               onClick={() => setActiveFilter('all')}
               className={`
-                px-4 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all
+                px-4 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-500
                 ${activeFilter === 'all' 
-                  ? 'bg-gradient-to-r from-service-marketing to-service-marketing-glow text-white shadow-lg' 
-                  : 'glass-card border border-border/50 hover:border-service-marketing/50'
+                  ? 'bg-neon-forest/20 text-neon-forest border-2 border-neon-forest/50 shadow-lg shadow-neon-forest/30' 
+                  : 'glass-card text-muted-foreground hover:text-foreground border border-border/50'
                 }
               `}
             >
-              All Projects
+              All Paths
             </motion.button>
             {serviceCategories.map((category) => {
               const Icon = category.icon;
@@ -223,17 +234,22 @@ const Services = ({ liteMode }: ServicesProps) => {
               return (
                 <motion.button
                   key={category.id}
-                  whileHover={!liteMode ? { scale: 1.05 } : {}}
+                  whileHover={!liteMode ? { scale: 1.05, y: -2 } : {}}
                   whileTap={!liteMode ? { scale: 0.95 } : {}}
                   onClick={() => setActiveFilter(category.id)}
                   className={`
-                    px-3 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all
+                    px-3 md:px-5 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-500
                     flex items-center gap-1.5 md:gap-2
                     ${isActive 
-                      ? `bg-gradient-to-r ${colors.gradient} text-white shadow-lg` 
-                      : `glass-card border ${colors.border} hover:${colors.border.replace('/30', '/50')}`
+                      ? `${colors.bg} ${colors.text} border-2 ${colors.border.replace('/30', '/50')} shadow-lg` 
+                      : `glass-card text-muted-foreground hover:text-foreground border ${colors.border}`
                     }
                   `}
+                  style={
+                    isActive
+                      ? { boxShadow: `0 8px 32px hsl(var(--service-${category.color === 'marketing' ? 'marketing' : category.color === 'digital' ? 'digital' : 'branding'}) / 0.3)` }
+                      : undefined
+                  }
                 >
                   <Icon size={14} className="hidden md:block" />
                   <Icon size={12} className="md:hidden" />
@@ -243,7 +259,7 @@ const Services = ({ liteMode }: ServicesProps) => {
               );
             })}
           </div>
-        </ScrollReveal>
+        </ScrollSection>
 
         {/* Masonry Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
@@ -252,7 +268,7 @@ const Services = ({ liteMode }: ServicesProps) => {
             const CategoryIcon = example.categoryIcon;
             
             return (
-              <ScrollReveal 
+              <ScrollSection 
                 key={`${example.categoryId}-${index}`}
                 delay={index * 0.05}
                 disabled={liteMode}
@@ -286,7 +302,7 @@ const Services = ({ liteMode }: ServicesProps) => {
                     liteMode={liteMode}
                   />
                 </motion.div>
-              </ScrollReveal>
+              </ScrollSection>
             );
           })}
         </div>

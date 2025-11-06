@@ -2,6 +2,7 @@ import { ChevronDown, Volume2, VolumeX } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { CinematicHero } from '@/components/CinematicHero';
+import Values from '@/components/Values';
 import Services from '@/components/Services';
 import Solutions from '@/components/Solutions';
 import About from '@/components/About';
@@ -84,17 +85,22 @@ const Index = () => {
           <CinematicHero onScrollToServices={() => scrollToSection('services')} />
         </section>
 
-        {/* Services Section */}
+        {/* Values Section - Forest Wisdom */}
+        <section id="values" className="py-20 relative">
+          <Values liteMode={liteMode} />
+        </section>
+
+        {/* Services Section - Innovation Groves */}
         <section id="services" className="py-20 relative">
           <Services liteMode={liteMode} />
         </section>
 
-        {/* Solutions Section */}
+        {/* Solutions Section - Impact Showcase */}
         <section id="solutions" className="py-20 relative">
           <Solutions liteMode={liteMode} />
         </section>
 
-        {/* About Section */}
+        {/* About Section - Our Story Timeline */}
         <section id="about" className="py-20 relative">
           <About liteMode={liteMode} />
         </section>
