@@ -1,20 +1,29 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Volume2, VolumeX } from 'lucide-react';
 import { motion } from 'framer-motion';
-import EnhancedHero from '@/components/EnhancedHero';
+import { useState } from 'react';
+import { CinematicHero } from '@/components/CinematicHero';
 import Services from '@/components/Services';
 import Solutions from '@/components/Solutions';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import FloatingMascot from '@/components/FloatingMascot';
-import FireflyCursor from '@/components/FireflyCursor';
-import ParticleSystem from '@/components/ParticleSystem';
-import ParallaxBackground from '@/components/ParallaxBackground';
-import FloatingLeaves from '@/components/FloatingLeaves';
+import { CursorEngine } from '@/components/CursorEngine';
+import { ParallaxForest } from '@/components/ParallaxForest';
+import { NatureParticleField } from '@/components/NatureParticleField';
+import { ForestFog } from '@/components/ForestFog';
 import { Navigation } from '@/components/Navigation';
 import { useLiteMode } from '@/contexts/LiteModeContext';
+import { useAmbientSound } from '@/hooks/useAmbientSound';
 
 const Index = () => {
   const { liteMode } = useLiteMode();
+  const [soundEnabled, setSoundEnabled] = useState(true);
+
+  // Ambient sound system
+  const { isPlaying, toggle: toggleSound } = useAmbientSound('/sounds/ambient-forest.mp3', {
+    autoPlay: !liteMode && soundEnabled,
+    volume: 0.3,
+  });
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -23,25 +32,47 @@ const Index = () => {
     }
   };
 
+  const handleSoundToggle = () => {
+    toggleSound();
+    setSoundEnabled(!soundEnabled);
+  };
+
   return (
     <div className="min-h-screen bg-background relative">
       {/* Background decorative elements - all at z-0 */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
-        {/* 3D Particle System */}
-        {!liteMode && <ParticleSystem />}
+        {/* Parallax Forest Background */}
+        {!liteMode && <ParallaxForest />}
         
-        {/* Parallax Background Layers */}
-        {!liteMode && <ParallaxBackground />}
+        {/* Nature Particle Field */}
+        {!liteMode && <NatureParticleField />}
         
-        {/* Floating Leaves */}
-        {!liteMode && <FloatingLeaves />}
+        {/* Forest Fog */}
+        {!liteMode && <ForestFog />}
       </div>
       
-      {/* Firefly cursor effect */}
-      {!liteMode && <FireflyCursor />}
+      {/* Custom Cursor Engine */}
+      {!liteMode && <CursorEngine />}
 
       {/* Floating Mascot */}
       {!liteMode && <FloatingMascot />}
+
+      {/* Sound Toggle Button */}
+      {!liteMode && (
+        <motion.button
+          onClick={handleSoundToggle}
+          className="fixed top-24 right-8 w-12 h-12 rounded-full glass-card flex items-center justify-center z-50 hover:scale-110 transition-transform"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          aria-label={isPlaying ? 'Mute sound' : 'Unmute sound'}
+        >
+          {isPlaying ? (
+            <Volume2 className="text-neon-forest" size={20} />
+          ) : (
+            <VolumeX className="text-muted-foreground" size={20} />
+          )}
+        </motion.button>
+      )}
 
       {/* Main content - higher z-index */}
       <div className="relative" style={{ zIndex: 10 }}>
@@ -49,8 +80,8 @@ const Index = () => {
         <Navigation />
 
         {/* Hero Section */}
-        <section id="home" className="pt-20 relative">
-          <EnhancedHero onScrollToServices={() => scrollToSection('services')} liteMode={liteMode} />
+        <section id="home" className="relative">
+          <CinematicHero onScrollToServices={() => scrollToSection('services')} />
         </section>
 
         {/* Services Section */}
