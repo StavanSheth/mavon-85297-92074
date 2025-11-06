@@ -58,6 +58,14 @@ export default {
           DEFAULT: "hsl(var(--leaf-green))",
           light: "hsl(var(--leaf-light))",
         },
+        neon: {
+          forest: "hsl(var(--neon-forest))",
+          glow: "hsl(var(--neon-forest-glow))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          glow: "hsl(var(--gold-glow))",
+        },
         teal: {
           DEFAULT: "hsl(var(--teal))",
           glow: "hsl(var(--teal-glow))",
@@ -230,6 +238,60 @@ export default {
             transform: "scale(1) translateY(0)",
           },
         },
+        "magnetic-pull": {
+          "0%": { transform: "translate(0, 0) scale(1)" },
+          "100%": { transform: "translate(var(--tx), var(--ty)) scale(1.05)" },
+        },
+        "leaf-float": {
+          "0%, 100%": { 
+            transform: "translateY(0) translateX(0) rotate(0deg)",
+            opacity: "0.6"
+          },
+          "25%": { 
+            transform: "translateY(-20px) translateX(10px) rotate(90deg)",
+            opacity: "0.8"
+          },
+          "50%": { 
+            transform: "translateY(-10px) translateX(-10px) rotate(180deg)",
+            opacity: "1"
+          },
+          "75%": { 
+            transform: "translateY(-30px) translateX(5px) rotate(270deg)",
+            opacity: "0.7"
+          },
+        },
+        "cursor-trail": {
+          "0%": { 
+            transform: "scale(1)",
+            opacity: "1"
+          },
+          "100%": { 
+            transform: "scale(0)",
+            opacity: "0"
+          },
+        },
+        "neon-pulse": {
+          "0%, 100%": { 
+            filter: "brightness(1) drop-shadow(0 0 5px currentColor)",
+            opacity: "1"
+          },
+          "50%": { 
+            filter: "brightness(1.5) drop-shadow(0 0 20px currentColor)",
+            opacity: "0.8"
+          },
+        },
+        "spotlight-sweep": {
+          "0%": { 
+            transform: "translateX(-100%)",
+          },
+          "100%": { 
+            transform: "translateX(100%)",
+          },
+        },
+        "text-shine": {
+          "0%": { backgroundPosition: "0% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
@@ -257,6 +319,12 @@ export default {
         "gradient-shift": "gradient-shift 8s ease-in-out infinite",
         "pop-bounce": "pop-bounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
         "pop-intense": "pop-intense 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
+        "magnetic-pull": "magnetic-pull 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+        "leaf-float": "leaf-float 8s ease-in-out infinite",
+        "cursor-trail": "cursor-trail 0.4s ease-out forwards",
+        "neon-pulse": "neon-pulse 2s ease-in-out infinite",
+        "spotlight-sweep": "spotlight-sweep 3s ease-in-out",
+        "text-shine": "text-shine 3s linear infinite",
       },
     },
   },
