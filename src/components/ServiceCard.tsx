@@ -116,12 +116,10 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
         `}
         data-example-url={example.demoUrl}
       >
-        {/* Ripple effect on click */}
         {rippleActive && (
           <div className={`absolute inset-0 ${colors.ring} ring-4 rounded-xl animate-ripple pointer-events-none z-20`} />
         )}
 
-        {/* Image Container */}
         <div className="relative aspect-video overflow-hidden">
           <img
             src={example.image}
@@ -135,11 +133,8 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             loading="lazy"
           />
           
-          {!imageLoaded && (
-            <div className="absolute inset-0 bg-card animate-pulse" />
-          )}
-          
-          {/* Gradient Overlay */}
+          {!imageLoaded && <div className="absolute inset-0 bg-card animate-pulse" />}
+
           <div className={`
             absolute inset-0 ${colors.overlay} opacity-0 
             group-hover:opacity-100 transition-opacity duration-400
@@ -154,10 +149,8 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             </div>
           </div>
 
-          {/* Leaf Particle Effect */}
           {!liteMode && isHovered && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* Bottom corner particles */}
               {[...Array(4)].map((_, i) => (
                 <div
                   key={`bottom-${i}`}
@@ -173,7 +166,6 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           )}
         </div>
 
-        {/* Content */}
         <div className="p-5 relative">
           <h5 className={`
             font-semibold text-foreground mb-2 transition-all duration-300
@@ -181,56 +173,47 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           `}>
             {example.title}
           </h5>
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-            {example.description}
-          </p>
 
-{/* Call to Action with eye-catching shimmer */}
-      <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
-        <Sparkles
-         size={16}
-         className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)]`}
-        />
-       <span
-       className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)] animate-pop-intense [animation-delay:0.1s]`}
-      >
-      Click me to Explore
-  </span>
-</div>
+          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{example.description}</p>
 
-          
-      {/* Modal for placeholder URLs */}
-      <Dialog open={showModal} onOpenChange={setShowModal}>
-        <DialogContent className="glass-card border-border/50">
-          <DialogHeader>
-            <DialogTitle className="text-holographic">{example.title}</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <img
-              src={example.image}
-              alt={`${example.title} - Mavon software solution detailed view`}
-              className="w-full rounded-lg"
-              loading="lazy"
+          {/* ✅ Final shimmer CTA */}
+          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
+            <Sparkles
+              size={16}
+              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
             />
-            <p className="text-muted-foreground">{example.description}</p>
-            <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
-              <p className="text-sm text-foreground/80">
-                <strong>Note for developer:</strong> Replace the placeholder URL in the data file with the actual project link.
-              </p>
-              <code className="block mt-2 text-xs bg-card p-2 rounded text-amber">
-                data-example-url="{example.demoUrl}"
-              </code>
-            </div>
-            <Button
-              variant="outline"
-              onClick={() => setShowModal(false)}
-              className="w-full"
+            <span
+              className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
             >
-              Close Preview
-            </Button>
+              Click me to Explore
+            </span>
           </div>
-        </DialogContent>
-      </Dialog>
+
+          <Dialog open={showModal} onOpenChange={setShowModal}>
+            <DialogContent className="glass-card border-border/50">
+              <DialogHeader>
+                <DialogTitle className="text-holographic">{example.title}</DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-4">
+                <img src={example.image} alt={`${example.title} preview`} className="w-full rounded-lg" loading="lazy" />
+                <p className="text-muted-foreground">{example.description}</p>
+
+                <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
+                  <p className="text-sm text-foreground/80">
+                    <strong>Note:</strong> Replace placeholder URL in data file with the real project link.
+                  </p>
+                  <code className="block mt-2 text-xs bg-card p-2 rounded text-amber">
+                    data-example-url="{example.demoUrl}"
+                  </code>
+                </div>
+
+                <Button variant="outline" onClick={() => setShowModal(false)} className="w-full">Close Preview</Button>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+      </div>
     </>
   );
 };
