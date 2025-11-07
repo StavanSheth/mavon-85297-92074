@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import { ExternalLink, Sparkles } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -135,8 +135,10 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             loading="lazy"
           />
 
-          {!imageLoaded && <div className="absolute inset-0 bg-card animate-pulse" />}
-
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-card animate-pulse" />
+          )}
+          
           {/* Gradient Overlay */}
           <div
             className={`
@@ -184,17 +186,25 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           >
             {example.title}
           </h5>
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{example.description}</p>
-
+          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+            {example.description}
+          </p>
+          
           {/* Call to Action with eye-catching shimmer */}
           {/* Call to Action with eye-catching pop animation */}
-          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
-            <Sparkles
+          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2 mt-3`}>
+            {/* Note: SVGs don't support bg-clip-text; keep icon visible + animated */}
+            <Sparkles 
               size={16}
-              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
+              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''}`} 
             />
             <span
-              className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
+              className={`${colors.glow} font-semibold bg-clip-text text-transparent animate-pop-intense [animation-delay:0.1s]`}
+              style={{
+                // diagonal shimmer using the service glow color variable
+                backgroundImage: `linear-gradient(to top right, hsl(var(--service-${color}-glow)/0.15), hsl(var(--service-${color}-glow)/0.55), hsl(var(--service-${color}-glow)/0.15))`,
+                backgroundSize: '200% 200%',
+              }}
             >
               Click me to Explore
             </span>
@@ -209,10 +219,13 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             <DialogTitle className="text-holographic">{example.title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <img src={example.image} alt={`${example.title} - Mavon software solution detailed view`} className="w-full rounded-lg" loading="lazy" />
-
+            <img
+              src={example.image}
+              alt={`${example.title} - Mavon software solution detailed view`}
+              className="w-full rounded-lg"
+              loading="lazy"
+            />
             <p className="text-muted-foreground">{example.description}</p>
-
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
               <p className="text-sm text-foreground/80">
                 <strong>Note for developer:</strong> Replace the placeholder URL in the data file with the actual project link.
@@ -221,8 +234,11 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
                 data-example-url="{example.demoUrl}"
               </code>
             </div>
-
-            <Button variant="outline" onClick={() => setShowModal(false)} className="w-full">
+            <Button
+              variant="outline"
+              onClick={() => setShowModal(false)}
+              className="w-full"
+            >
               Close Preview
             </Button>
           </div>
