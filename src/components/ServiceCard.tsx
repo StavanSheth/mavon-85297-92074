@@ -187,6 +187,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           
           {/* Call to Action with eye-catching pop animation */}
        {/* Call to Action with eye-catching shimmer */}
+{/* CTA shimmer like Lovable */}
 <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
   <Sparkles
     size={16}
@@ -199,6 +200,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
     Click me to Explore
   </span>
 </div>
+
 
         
 
