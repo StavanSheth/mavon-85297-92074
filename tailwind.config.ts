@@ -203,33 +203,40 @@ export default {
             transform: "scale(1.05)",
           },
         },
-        "pop-bounce": {
-          "0%, 100%": { 
-            transform: "scale(1) rotate(0deg)",
-            filter: "drop-shadow(0 0 0px currentColor)",
-          },
-          "50%": { 
-            transform: "scale(1.15) rotate(-2deg)",
-            filter: "drop-shadow(0 0 8px currentColor)",
-          },
-        },
-        "pop-intense": {
-          "0%": { 
-            transform: "scale(1) translateY(0)",
-          },
-          "25%": { 
-            transform: "scale(1.2) translateY(-4px)",
-          },
-          "50%": { 
-            transform: "scale(0.95) translateY(0)",
-          },
-          "75%": { 
-            transform: "scale(1.1) translateY(-2px)",
-          },
-          "100%": { 
-            transform: "scale(1) translateY(0)",
-          },
-        },
+        // "pop-bounce": {
+        //   "0%, 100%": { 
+        //     transform: "scale(1) rotate(0deg)",
+        //     filter: "drop-shadow(0 0 0px currentColor)",
+        //   },
+        //   "50%": { 
+        //     transform: "scale(1.15) rotate(-2deg)",
+        //     filter: "drop-shadow(0 0 8px currentColor)",
+        //   },
+        // },
+    // Replace pop-bounce / pop-intense with this
+       "thinking-subtle": {
+         '0%':   { backgroundPosition: '0% 0%' },
+        '100%': { backgroundPosition: '200% 200%' },
+       },
+      },
+
+        // "pop-intense": {
+        //   "0%": { 
+        //     transform: "scale(1) translateY(0)",
+        //   },
+        //   "25%": { 
+        //     transform: "scale(1.2) translateY(-4px)",
+        //   },
+        //   "50%": { 
+        //     transform: "scale(0.95) translateY(0)",
+        //   },
+        //   "75%": { 
+        //     transform: "scale(1.1) translateY(-2px)",
+        //   },
+        //   "100%": { 
+        //     transform: "scale(1) translateY(0)",
+        //   },
+        // },
       },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
@@ -255,8 +262,10 @@ export default {
         "particle-float": "particle-float 1.5s ease-out forwards",
         "pulse-slow": "pulse-slow 4s ease-in-out infinite",
         "gradient-shift": "gradient-shift 8s ease-in-out infinite",
-        "pop-bounce": "pop-bounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
-        "pop-intense": "pop-intense 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
+        // "pop-bounce": "pop-bounce 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
+        // "pop-intense": "pop-intense 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
+       'pop-bounce': 'thinking-subtle 2.4s linear infinite',
+       'pop-intense': 'thinking-subtle 2.4s linear infinite',
       },
     },
   },
