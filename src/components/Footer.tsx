@@ -43,7 +43,7 @@ export const Footer = () => {
 
           {/* Copyright */}
           <div className="text-foreground/60 text-sm">
-            © 2025 Mavon. All rights reserved.
+            © 2025 Mavon — India’s trusted software development & automation solutions company. All rights reserved.
           </div>
         </div>
 
