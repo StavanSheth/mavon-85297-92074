@@ -125,7 +125,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
         <div className="relative aspect-video overflow-hidden">
           <img
             src={example.image}
-            alt={example.title}
+            alt={`${example.title} - Mavon software solution showcase example`}
             className={`
               w-full h-full object-cover transition-all duration-500
               ${imageLoaded ? 'opacity-100' : 'opacity-0'}
@@ -210,8 +210,9 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           <div className="space-y-4">
             <img
               src={example.image}
-              alt={example.title}
+              alt={`${example.title} - Mavon software solution detailed view`}
               className="w-full rounded-lg"
+              loading="lazy"
             />
             <p className="text-muted-foreground">{example.description}</p>
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">

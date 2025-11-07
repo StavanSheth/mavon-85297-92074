@@ -23,7 +23,7 @@ const EnhancedHero = ({ onScrollToServices, liteMode }: EnhancedHeroProps) => {
       <div className="absolute inset-0 z-0">
         <motion.img
           src={heroForest}
-          alt="Bioluminescent forest"
+          alt="Mavon Software Solutions - Futuristic technology and innovation represented by bioluminescent forest"
           className="w-full h-full object-cover"
           loading="eager"
           initial={{ scale: 1.1 }}

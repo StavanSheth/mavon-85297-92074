@@ -1,0 +1,21 @@
+{
+  "name": "Mavon Software Solutions",
+  "short_name": "Mavon",
+  "description": "Futuristic software solutions that grow with nature. Custom web apps, mobile development, AI chatbots, branding, and marketing automation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f0a",
+  "theme_color": "#66bb6a",
+  "icons": [
+    {
+      "src": "/assets/mavon-logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/assets/mavon-logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
