@@ -89,8 +89,6 @@ const About = ({ liteMode }: AboutProps) => {
             whileHover={!liteMode ? { scale: 1.01, boxShadow: '0 0 40px rgba(102, 187, 106, 0.3)' } : {}}
           >
             <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-              Mavon is a software development & automation company based in India, combining creativity with technology to build future-ready solutions.
-              As a top software solutions provider, Mavon delivers innovative apps, automation tools, & digital products.
             </p>
             <motion.p 
               className="text-lg text-foreground/90 leading-relaxed"
@@ -99,6 +97,8 @@ const About = ({ liteMode }: AboutProps) => {
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
             >
+              Mavon is a software development & automation company based in India, combining creativity with technology to build future-ready solutions.
+              As a top software solutions provider, Mavon delivers innovative apps, automation tools, & digital products.
               We take pride in delivering exceptional results that drive growth and <motion.span
                 className="text-primary font-semibold"
                 animate={!liteMode ? { 
