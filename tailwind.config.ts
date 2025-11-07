@@ -213,14 +213,7 @@ export default {
         //     filter: "drop-shadow(0 0 8px currentColor)",
         //   },
         // },
-    // Replace pop-bounce / pop-intense with this
-       "thinking-subtle": {
-         '0%':   { backgroundPosition: '0% 0%' },
-        '100%': { backgroundPosition: '200% 200%' },
-       },
-      },
-
-        // "pop-intense": {
+               // "pop-intense": {
         //   "0%": { 
         //     transform: "scale(1) translateY(0)",
         //   },
@@ -237,6 +230,11 @@ export default {
         //     transform: "scale(1) translateY(0)",
         //   },
         // },
+       "thinking-subtle": {
+         '0%':   { backgroundPosition: '0% 0%' },
+        '100%': { backgroundPosition: '200% 200%' },
+        },
+       },
       },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
