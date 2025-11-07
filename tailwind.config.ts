@@ -266,7 +266,7 @@ export default {
         // "pop-intense": "pop-intense 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite",
        'pop-bounce': 'thinking-subtle 2.4s linear infinite',
        'pop-intense': 'thinking-subtle 2.4s linear infinite',
-      },
+
     },
   },
   plugins: [require("tailwindcss-animate")],
