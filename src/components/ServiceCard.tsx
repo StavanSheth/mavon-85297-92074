@@ -135,11 +135,21 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             loading="lazy"
           />
           
-          {!imageLoaded && <div className="absolute inset-0 bg-card animate-pulse" />}
-
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-card animate-pulse" />
+          )}
+          
           {/* Gradient Overlay */}
-          <div className={`absolute inset-0 ${colors.overlay} opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center`}>
-            <div className={`w-14 h-14 rounded-full ${colors.icon} flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-400 shadow-lg`}>
+          <div className={`
+            absolute inset-0 ${colors.overlay} opacity-0 
+            group-hover:opacity-100 transition-opacity duration-400
+            flex items-center justify-center
+          `}>
+            <div className={`
+              w-14 h-14 rounded-full ${colors.icon} flex items-center justify-center
+              transform scale-0 group-hover:scale-100 transition-transform duration-400
+              shadow-lg
+            `}>
               <ExternalLink className="text-white" size={22} />
             </div>
           </div>
@@ -147,11 +157,16 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           {/* Leaf Particle Effect */}
           {!liteMode && isHovered && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {/* Bottom corner particles */}
               {[...Array(4)].map((_, i) => (
                 <div
                   key={`bottom-${i}`}
                   className={`absolute w-1.5 h-1.5 ${colors.particle} rounded-full animate-particle-float`}
-                  style={{ left: `${10 + i * 25}%`, bottom: '8%', animationDelay: `${i * 0.15}s` }}
+                  style={{
+                    left: `${10 + i * 25}%`,
+                    bottom: '8%',
+                    animationDelay: `${i * 0.15}s`,
+                  }}
                 />
               ))}
             </div>
@@ -160,29 +175,28 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
 
         {/* Content */}
         <div className="p-5 relative">
-          <h5 className={`font-semibold text-foreground mb-2 transition-all duration-300 ${isHovered ? colors.text + ' drop-shadow-[0_0_8px_currentColor]' : ''}`}>
+          <h5 className={`
+            font-semibold text-foreground mb-2 transition-all duration-300
+            ${isHovered ? colors.text + ' drop-shadow-[0_0_8px_currentColor]' : ''}
+          `}>
             {example.title}
           </h5>
-
           <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
             {example.description}
           </p>
-
-          {/* Call to Action with eye-catching shimmer */}
-          <div className={`flex items-center gap-2 ${!liteMode ? 'animate-pop-intense' : ''}`}>
-
-            {/* Sparkle with shimmer mask */}
-            <span className="relative inline-block">
-              <Sparkles size={16} className={`${colors.glow}`} />
-              <span className="absolute inset-0 bg-gradient-to-tr from-current/20 via-current/70 to-current/20 bg-[length:250%_250%] animate-shimmer-mask pointer-events-none rounded-sm"></span>
+          
+          {/* Call to Action with eye-catching pop animation */}
+          <div className={`
+            // flex items-center gap-2 text-sm font-medium
+            ${!liteMode ? 'animate-pop-intense' : ''}
+          `}> 
+            <Sparkles 
+              className={`${colors.text} ${!liteMode ? 'animate-pop-bounce' : ''}`} 
+              size={16} 
+            />
+            <span className={`${colors.glow} font-semibold`}>
+              Click me to Explore
             </span>
-
-            {/* Text shimmer mask */}
-            <span className="relative font-semibold">
-              <span className={`${colors.glow}`}>Click me to Explore</span>
-              <span className="absolute inset-0 bg-gradient-to-tr from-current/20 via-current/70 to-current/20 bg-[length:250%_250%] animate-shimmer-mask pointer-events-none"></span>
-            </span>
-
           </div>
         </div>
       </div>
@@ -194,15 +208,28 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             <DialogTitle className="text-holographic">{example.title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <img src={example.image} alt={`${example.title} - Mavon software solution detailed view`} className="w-full rounded-lg" loading="lazy" />
+            <img
+              src={example.image}
+              alt={`${example.title} - Mavon software solution detailed view`}
+              className="w-full rounded-lg"
+              loading="lazy"
+            />
             <p className="text-muted-foreground">{example.description}</p>
-
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
-              <p className="text-sm text-foreground/80"><strong>Note for developer:</strong> Replace the placeholder URL in the data file with the actual project link.</p>
-              <code className="block mt-2 text-xs bg-card p-2 rounded text-amber">data-example-url="{example.demoUrl}"</code>
+              <p className="text-sm text-foreground/80">
+                <strong>Note for developer:</strong> Replace the placeholder URL in the data file with the actual project link.
+              </p>
+              <code className="block mt-2 text-xs bg-card p-2 rounded text-amber">
+                data-example-url="{example.demoUrl}"
+              </code>
             </div>
-
-            <Button variant="outline" onClick={() => setShowModal(false)} className="w-full">Close Preview</Button>
+            <Button
+              variant="outline"
+              onClick={() => setShowModal(false)}
+              className="w-full"
+            >
+              Close Preview
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
