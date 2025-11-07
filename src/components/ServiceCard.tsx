@@ -184,18 +184,20 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
             {example.description}
           </p>
-          
-          {/* Call to Action with eye-catching pop animation */}
-<div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
-  <Sparkles
-    size={16}
-    className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)]`}
-  />
 
-  <span className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)] animate-pop-intense [animation-delay:0.1s]`}>
-    Click me to Explore
+{/* Call to Action with eye-catching shimmer */}
+      <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
+        <Sparkles
+         size={16}
+         className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)]`}
+        />
+       <span
+       className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)] animate-pop-intense [animation-delay:0.1s]`}
+      >
+      Click me to Explore
   </span>
 </div>
+
           
       {/* Modal for placeholder URLs */}
       <Dialog open={showModal} onOpenChange={setShowModal}>
