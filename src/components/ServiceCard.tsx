@@ -189,17 +189,14 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
 <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
   <Sparkles
     size={16}
-    className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--${color}-glow)/0.15)] via-[hsl(var(--${color}-glow)/0.55)] to-[hsl(var(--${color}-glow)/0.15)]`}
+    className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)]`}
   />
 
-  <span className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--${color}-glow)/0.15)] via-[hsl(var(--${color}-glow)/0.55)] to-[hsl(var(--${color}-glow)/0.15)] animate-pop-intense [animation-delay:0.1s]`}>
+  <span className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--service-${color}-glow)/0.15)] via-[hsl(var(--service-${color}-glow)/0.55)] to-[hsl(var(--service-${color}-glow)/0.15)] animate-pop-intense [animation-delay:0.1s]`}>
     Click me to Explore
   </span>
 </div>
-
-
-
-
+          
       {/* Modal for placeholder URLs */}
       <Dialog open={showModal} onOpenChange={setShowModal}>
         <DialogContent className="glass-card border-border/50">
