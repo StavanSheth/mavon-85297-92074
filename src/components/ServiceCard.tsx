@@ -134,11 +134,9 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             onLoad={() => setImageLoaded(true)}
             loading="lazy"
           />
-          
-          {!imageLoaded && (
-            <div className="absolute inset-0 bg-card animate-pulse" />
-          )}
-          
+
+          {!imageLoaded && <div className="absolute inset-0 bg-card animate-pulse" />}
+
           {/* Gradient Overlay */}
           <div
             className={`
@@ -190,19 +188,16 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
 
           {/* Call to Action with eye-catching shimmer */}
           {/* Call to Action with eye-catching pop animation */}
-<div className={`
-  // flex items-center gap-2 text-sm font-medium
-  ${!liteMode ? 'animate-pop-intense' : ''}
-`}> 
-  <Sparkles 
-    className={`${colors.text} ${!liteMode ? 'animate-pop-bounce' : ''}`} 
-    size={16} 
-  />
-  <span className={`${colors.glow} font-semibold`}>
-    Click me to Explore
-  </span>
-</div>
-
+          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
+            <Sparkles
+              size={16}
+              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
+            />
+            <span
+              className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
+            >
+              Click me to Explore
+            </span>
           </div>
         </div>
       </div>
@@ -214,13 +209,10 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
             <DialogTitle className="text-holographic">{example.title}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
-            <img
-              src={example.image}
-              alt={`${example.title} - Mavon software solution detailed view`}
-              className="w-full rounded-lg"
-              loading="lazy"
-            />
+            <img src={example.image} alt={`${example.title} - Mavon software solution detailed view`} className="w-full rounded-lg" loading="lazy" />
+
             <p className="text-muted-foreground">{example.description}</p>
+
             <div className="bg-muted/50 p-4 rounded-lg border border-border/50">
               <p className="text-sm text-foreground/80">
                 <strong>Note for developer:</strong> Replace the placeholder URL in the data file with the actual project link.
@@ -229,6 +221,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
                 data-example-url="{example.demoUrl}"
               </code>
             </div>
+
             <Button variant="outline" onClick={() => setShowModal(false)} className="w-full">
               Close Preview
             </Button>
