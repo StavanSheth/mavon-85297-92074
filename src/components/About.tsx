@@ -74,7 +74,7 @@ const About = ({ liteMode }: AboutProps) => {
       <ScrollReveal disabled={liteMode}>
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            About Us
+            About Mavon — A Futuristic Software Solutions Company in India
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Pioneering the future of technology solutions
@@ -89,9 +89,9 @@ const About = ({ liteMode }: AboutProps) => {
             whileHover={!liteMode ? { scale: 1.01, boxShadow: '0 0 40px rgba(102, 187, 106, 0.3)' } : {}}
           >
             <p className="text-lg text-foreground/90 leading-relaxed mb-6">
-              At Mavon, we believe in the power of technology to transform businesses. 
-              Our team combines cutting-edge development practices with sustainable approaches to create solutions 
-              that not only meet your needs today but also contribute to a better tomorrow.
+              Mavon is a software development and automation company based in India, combining creativity with technology to build future-ready solutions.
+              As a top software solutions provider, Mavon delivers sustainable and innovative apps, automation tools, and digital products.
+              Mavon software development team working on custom tech solutions.
             </p>
             <motion.p 
               className="text-lg text-foreground/90 leading-relaxed"
