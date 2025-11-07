@@ -75,9 +75,10 @@ const Contact = ({ liteMode }: ContactProps) => {
         <ScrollReveal disabled={liteMode}>
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Contact Mavon — Your Software Development Partner
+              Contact Mavon
             </h2>
             <p className="text-xl text-muted-foreground">
+              Your Software Development Partner. 
               Have a project in mind? Mavon’s software experts are here to design custom web, mobile, and automation solutions that fit your goals.
             </p>
           </div>
