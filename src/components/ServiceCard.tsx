@@ -194,9 +194,9 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
               className={`${colors.text} ${!liteMode ? 'animate-pop-bounce' : ''}`} 
               size={16} 
             />
-          <span className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-br from-[hsl(var(--primary-glow)/0.15)] via-[hsl(var(--primary-glow)/0.55)] to-[hsl(var(--primary-glow)/0.15)] animate-pop-intense`}>
-            Click me to Explore
-        </span>
+          <span className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-[hsl(var(--primary-glow)/0.15)] via-[hsl(var(--primary-glow)/0.55)] to-[hsl(var(--primary-glow)/0.15)] animate-pop-intense`}>
+           Click me to Explore
+      </span>
           </div>
         </div>
       </div>
