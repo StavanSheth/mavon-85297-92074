@@ -83,7 +83,8 @@ const Solutions = ({ liteMode }: SolutionsProps) => {
               Our Solutions
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive technology solutions tailored to your business needs
+             Enterprise Software & Business Growth Solutions.
+            From ERP systems to data security and rapid MVP development, Mavon helps enterprises scale through reliable technology infrastructure.
           </p>
         </div>
       </ScrollReveal>
