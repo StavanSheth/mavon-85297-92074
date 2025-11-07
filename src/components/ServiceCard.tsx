@@ -186,20 +186,21 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           </p>
           
           {/* Call to Action with eye-catching pop animation */}
-          <div className={`
-            // flex items-center gap-2 text-sm font-medium
-            ${!liteMode ? 'animate-pop-intense' : ''}
-          `}> 
-            <Sparkles 
-              className={`${colors.text} ${!liteMode ? 'animate-pop-bounce' : ''}`} 
-              size={16} 
-            />
-            <span className={`${colors.glow} font-semibold`}>
-              Click me to Explore
-            </span>
-          </div>
-        </div>
-      </div>
+       {/* Call to Action with eye-catching shimmer */}
+<div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
+  <Sparkles
+    size={16}
+    className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
+  />
+
+  <span
+    className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
+  >
+    Click me to Explore
+  </span>
+</div>
+
+        
 
       {/* Modal for placeholder URLs */}
       <Dialog open={showModal} onOpenChange={setShowModal}>
