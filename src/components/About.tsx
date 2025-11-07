@@ -78,7 +78,6 @@ const About = ({ liteMode }: AboutProps) => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A Futuristic Software Solutions Company in India.
-            Pioneering the future of technology solutions
           </p>
         </div>
       </ScrollReveal>
@@ -100,7 +99,6 @@ const About = ({ liteMode }: AboutProps) => {
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
             >
-              From custom software development to digital marketing strategies, we're your partner in digital transformation. 
               We take pride in delivering exceptional results that drive growth and <motion.span
                 className="text-primary font-semibold"
                 animate={!liteMode ? { 
