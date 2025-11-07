@@ -191,24 +191,17 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           </p>
           
           {/* Call to Action with eye-catching shimmer */}
-          {/* Call to Action with eye-catching pop animation */}
-          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2 mt-3`}>
-            {/* Note: SVGs don't support bg-clip-text; keep icon visible + animated */}
-            <Sparkles 
-              size={16}
-              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''}`} 
-            />
-            <span
-              className={`${colors.glow} font-semibold bg-clip-text text-transparent animate-pop-intense [animation-delay:0.1s]`}
-              style={{
-                // diagonal shimmer using the service glow color variable
-                backgroundImage: `linear-gradient(to top right, hsl(var(--service-${color}-glow)/0.15), hsl(var(--service-${color}-glow)/0.55), hsl(var(--service-${color}-glow)/0.15))`,
-                backgroundSize: '200% 200%',
-              }}
-            >
-              Click me to Explore
-            </span>
-          </div>
+          <div className={`flex items-center gap-2 ${!liteMode ? 'animate-pop-intense' : ''}`}>
+       <Sparkles
+        size={16}
+        className={`${colors.glow} bg-clip-text text-transparent bg-[length:250%_250%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0s]`}
+       />
+  <span
+    className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:250%_250%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
+  >
+    Click me to Explore
+  </span>
+</div>
         </div>
       </div>
 
