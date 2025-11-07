@@ -234,6 +234,8 @@ export default {
          '0%':   { backgroundPosition: '0% 0%' },
         '100%': { backgroundPosition: '200% 200%' },
         },
+       },
+      },
       animation: {
         "accordion-down": "accordion-down 0.3s ease-out",
         "accordion-up": "accordion-up 0.3s ease-out",
