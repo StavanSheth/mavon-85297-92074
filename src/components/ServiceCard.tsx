@@ -140,16 +140,20 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           )}
           
           {/* Gradient Overlay */}
-          <div className={`
-            absolute inset-0 ${colors.overlay} opacity-0 
-            group-hover:opacity-100 transition-opacity duration-400
-            flex items-center justify-center
-          `}>
-            <div className={`
-              w-14 h-14 rounded-full ${colors.icon} flex items-center justify-center
-              transform scale-0 group-hover:scale-100 transition-transform duration-400
-              shadow-lg
-            `}>
+          <div
+            className={`
+              absolute inset-0 ${colors.overlay} opacity-0 
+              group-hover:opacity-100 transition-opacity duration-400
+              flex items-center justify-center
+            `}
+          >
+            <div
+              className={`
+                w-14 h-14 rounded-full ${colors.icon} flex items-center justify-center
+                transform scale-0 group-hover:scale-100 transition-transform duration-400
+                shadow-lg
+              `}
+            >
               <ExternalLink className="text-white" size={22} />
             </div>
           </div>
@@ -157,7 +161,6 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
           {/* Leaf Particle Effect */}
           {!liteMode && isHovered && (
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
-              {/* Bottom corner particles */}
               {[...Array(4)].map((_, i) => (
                 <div
                   key={`bottom-${i}`}
@@ -175,34 +178,30 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
 
         {/* Content */}
         <div className="p-5 relative">
-          <h5 className={`
-            font-semibold text-foreground mb-2 transition-all duration-300
-            ${isHovered ? colors.text + ' drop-shadow-[0_0_8px_currentColor]' : ''}
-          `}>
+          <h5
+            className={`
+              font-semibold text-foreground mb-2 transition-all duration-300
+              ${isHovered ? colors.text + ' drop-shadow-[0_0_8px_currentColor]' : ''}
+            `}
+          >
             {example.title}
           </h5>
-          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-            {example.description}
-          </p>
-          
-          {/* Call to Action with eye-catching pop animation */}
-       {/* Call to Action with eye-catching shimmer */}
-{/* CTA shimmer like Lovable */}
-<div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
-  <Sparkles
-    size={16}
-    className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
-  />
+          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{example.description}</p>
 
-  <span
-    className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
-  >
-    Click me to Explore
-  </span>
-</div>
-
-
-        
+          {/* Call to Action with eye-catching shimmer */}
+          <div className={`${!liteMode ? 'animate-pop-intense' : ''} flex items-center gap-2`}>
+            <Sparkles
+              size={16}
+              className={`${colors.glow} ${!liteMode ? 'animate-pop-intense [animation-delay:0s]' : ''} bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20`}
+            />
+            <span
+              className={`${colors.glow} font-semibold bg-clip-text text-transparent bg-[length:200%_200%] bg-gradient-to-tr from-current/20 via-current/60 to-current/20 animate-pop-intense [animation-delay:0.1s]`}
+            >
+              Click me to Explore
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Modal for placeholder URLs */}
       <Dialog open={showModal} onOpenChange={setShowModal}>
@@ -226,11 +225,7 @@ const ServiceCard = ({ example, color, liteMode }: ServiceCardProps) => {
                 data-example-url="{example.demoUrl}"
               </code>
             </div>
-            <Button
-              variant="outline"
-              onClick={() => setShowModal(false)}
-              className="w-full"
-            >
+            <Button variant="outline" onClick={() => setShowModal(false)} className="w-full">
               Close Preview
             </Button>
           </div>
