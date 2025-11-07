@@ -5,6 +5,7 @@ import Services from '@/components/Services';
 import Solutions from '@/components/Solutions';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
+import FAQ from '@/components/FAQ';
 import FloatingMascot from '@/components/FloatingMascot';
 import FireflyCursor from '@/components/FireflyCursor';
 import ParticleSystem from '@/components/ParticleSystem';
@@ -66,6 +67,11 @@ const Index = () => {
         {/* About Section */}
         <section id="about" className="py-20 relative">
           <About liteMode={liteMode} />
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-20 relative">
+          <FAQ liteMode={liteMode} />
         </section>
 
         {/* Contact Section */}
